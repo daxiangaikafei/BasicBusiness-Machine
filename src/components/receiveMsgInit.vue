@@ -1,12 +1,12 @@
 <template>
-	<div class="receiveMsg-context" v-if="item.receiveObj.questionType == 'normal'">
+	<div class="receiveMsg-context" v-if="item.receiveObj.questionType == 'init'">
 		<img class="img-icon" src="../static/images/receiveMsg-icon.png">
 		<div class="receiveMsg-context-text">{{ item.receiveObj.data.value }}</div>
 	</div>
 </template>
 <script>
 	export default {
-		name: 'receiveMsgContext',
+		name: 'receiveMsgInit',
 		props: ['item']
 	}
 	

@@ -1,6 +1,6 @@
 <template>
 	<div class="tag-container">
-		<div class="tag-item" v-on:click="invokeSendMsg(tag.value,tag.tagDetailId)" v-for="tag in tagList">
+		<div class="tag-item" v-on:click="invokeSendMsg(tag.value,tag.tagDetailId)" v-for="tag in tagList.items">
 			{{ tag.value }}
 		</div>
 	</div>

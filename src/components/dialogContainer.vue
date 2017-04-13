@@ -8,6 +8,7 @@
 					<receiveMsgGoods v-bind:item="item"></receiveMsgGoods>
 					<receiveMsgWeather v-bind:item="item"></receiveMsgWeather>
 					<receiveMsgQuestion v-on:sendMsg="sendMsg" v-bind:item="item"></receiveMsgQuestion>
+					<receiveMsgInit v-if="initFlag == 0" v-bind:item="item"></receiveMsgInit>
 				</div>
 			</div>
 		</div>
@@ -20,7 +21,6 @@
 </template>
 
 <script>
-var flag = 0;
 import '../plugins/swiper.min.js'
 import '../static/style/swiper.min.css'
 import ajax from  '../config/ajax'
@@ -29,6 +29,7 @@ import receiveMsgContext from './receiveMsgContext'
 import receiveMsgGoods from './receiveMsgGoods'
 import receiveMsgWeather from './receiveMsgWeather'
 import receiveMsgQuestion from './receiveMsgQuestion'
+import receiveMsgInit from './receiveMsgInit'
 import dialogTag from './dialogTag'
 export default {
 	name: 'dialogContainer',
@@ -47,7 +48,9 @@ export default {
 				}
 			],
 			id: 0,
-			title: ''	
+			title: '',
+			initFlag: 1,
+			tagList: {}
 		}
 	},
 	components: {
@@ -56,6 +59,7 @@ export default {
 		receiveMsgGoods,
 		receiveMsgWeather,
 		receiveMsgQuestion,
+		receiveMsgInit,
 		dialogTag
 	},
 	props: ['pageId'],
@@ -69,6 +73,22 @@ export default {
 
   			// call back function for dom update
   			this.afterRender();
+
+  			var initObj = {
+				type: 2,
+				receiveObj: {
+					questionType: 'init',
+					receiveContext: '欢迎使用智能机器人小智~~',
+					data: {
+						value: '小智正在为您思考哟.....'
+					}
+				}
+			}
+			this.initFlag = 0;
+			this.itemList.push(initObj);
+			// call back function for dom update
+  			this.afterRender();
+
   			//初始化swiper
 	    	new Swiper('.swiper-container', {
 		        pagination: '.swiper-pagination',
@@ -90,61 +110,10 @@ export default {
   				type: 2,
   				receiveObj: data
   			}
-
-  			console.log(obj)
+  			this.initFlag = 1;
   			this.itemList.push(obj);
-  			console.log('receiveMsg invoked')
+  			// call back function for dom update
   			this.afterRender();
-
-  			// if(flag == 0){
-	  		// 	let obj = {
-	  		// 		type: 2,
-	  		// 		receiveObj: {
-					// 	questionType: 'normal',
-					// 	receiveContext: '欢迎使用智能机器人小智~~',
-					// 	data: {
-					// 		value: '您好，国内微商平台钱宝网，基于高频流量入口和资本，发展以微商为核心，微商下乡和跨境电商并行的“一体两翼”模式，并依托优质微商全力构建小微企业的超级孵化器，打造社交化和移动电商为主体的交易平台的闭环。目前，钱宝网会员数已超1亿，入驻48万余商家'
-					// 	}
-					// }
-	  		// 	}
-	  		// 	this.itemList.push(obj);
-  			// }
-
-  			// if(flag == 1){
-	  		// 	let obj2 = {
-	  		// 			type: 2,
-	  		// 			receiveObj: {
-	  		// 				questionType: 'weather',
-	  		// 				title: '小智为你查询了上海市的天气，你看看~',
-	  		// 				test: 'test',
-	  		// 				weatherInfo: [
-	  		// 					{
-	  		// 						date: '3/27 今天',
-	  		// 						weather: '晴天',
-	  		// 						status: 1,
-	  		// 						temperature: '8-20°C',
-	  		// 						airQuality: '良'
-	  		// 					},
-	  		// 					{
-	  		// 						date: '3/28 明天',
-	  		// 						weather: '晴天',
-	  		// 						status: 1,
-	  		// 						temperature: '8-20°C',
-	  		// 						airQuality: ''
-	  		// 					},
-	  		// 					{
-	  		// 						date: '3/27 后天',
-	  		// 						weather: '有雨',
-	  		// 						status: 3,
-	  		// 						temperature: '8-20°C',
-	  		// 						airQuality: ''
-	  		// 					}
-	  		// 				]
-	  		// 			}
-	  		// 		}
-	  		// 	this.itemList.push(obj2);
-  			// }
-  			// this.changeFlag();
   			
   		},
   		afterRender: function () {
@@ -155,17 +124,11 @@ export default {
   		getRandom: function () {
   			var i = Math.random();
   			// return Math.ceil(i * 10) >= 5 ? 4 : Math.ceil(i * 10);
-  			return 3;
+  			return 4;
   		}
   		
 	},
 	created(){
-		// this.$store.dispatch('initializeData');
-		// if(this.$store.state.itemDetail.length == 0){
-		// 	this.$store.dispatch('getData');
-		// }
-		// document.body.style.backgroundImage = 'url(./static/img/1-1.jpg)';
-		// get page id and page title from $route.query
 		var pageId = this.$route.query.pageId
 		this.title = this.$route.query.title == undefined ? '小智' : this.$route.query.title
 		var lat = this.$route.query.lat
@@ -181,27 +144,13 @@ export default {
 	    });
 	},
 	mounted () {
-		document.getElementById('dialog-container').style.height = (document.body.clientHeight - 50) + 'px'
+		document.getElementById('dialog-container').style.height = (document.body.clientHeight - 60) + 'px'
 
-		// this.$http.get('http://192.168.132.44/machine/tagItem', {
-		//   params: {
-		//     id: this.id
-		//   }
-		// }).then((response) => {
-		//   // this.hotkey = response.data.data.hotkey.slice(0, 5)
-		//   this.tagList = response.data.items;
-		// })
-
-		console.log(Math.ceil(Math.random() * 10));
-		var jsonpCallback = function(data) {
-			console.log(data)
-		}
-
-		// ajax('GET','http://192.168.132.44/machine/tagjsonp',{
-		// 	jsonp: 'callbackparam',
-		// 	jsonpCallback: 'jsonpCallback'
-		// })
-
+		ajax('GET','/mock/tagList.json').
+		then(res => {
+			this.tagList = res.data
+			console.log(this.tagList.items)
+		})
 
 	},
 	computed() {
