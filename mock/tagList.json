@@ -1,0 +1,21 @@
+{
+  "data": {
+    "items": [
+      {
+        "tagDetailId": 1,
+        "value": "注册帐号"
+      },
+      {
+        "tagDetailId": 2,
+        "value": "找回密码"
+      },{
+        "tagDetailId": 3,
+        "value": "忘记帐号"
+      }
+    ],
+    "menuId": 2
+  },
+  "success": true,
+  "message": "Ok",
+  "responseCode": 1000
+}

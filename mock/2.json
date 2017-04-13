@@ -1,0 +1,42 @@
+{
+  "data": [
+    {
+      "dirId": 1002,
+      "dirName": "密码",
+      "questions": [
+        {
+          "id": 7768,
+          "question": "如何修改登录密码"
+        },
+        {
+          "id": 7769,
+          "question": "忘记登录密码如何找回"
+        },
+        {
+          "id": 7770,
+          "question": "为什么不能设置登录密码"
+        }
+      ]
+    },
+    {
+      "dirId": 1006,
+      "dirName": "签到",
+      "questions": [
+        {
+          "id": 7798,
+          "question": "为什么签到时提示80%浮动收益"
+        },
+        {
+          "id": 7799,
+          "question": "签到工资发放调整包含哪些内容"
+        }
+      ]
+    }
+  ],
+  "success": true,
+  "title": "小智给您找到的相关问题",
+  "message": "Ok",
+  "questionType": "Q&A",
+  "userId": 0,
+  "responseCode": 1000
+}

@@ -15,6 +15,17 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
     // https://github.com/chimurai/http-proxy-middleware
 
 var server = express()
+
+//设置跨域访问  
+// server.all('*', function(req, res, next) {  
+//     res.header("Access-Control-Allow-Origin", "*");  
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");  
+//     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");  
+//     res.header("X-Powered-By",' 3.2.1')  
+//     res.header("Content-Type", "application/json;charset=utf-8");  
+//     next();  
+// });
+
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
