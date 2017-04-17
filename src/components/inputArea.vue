@@ -40,7 +40,7 @@
             return {
                 detailId: this.parseId,
                 sendMsg: '',
-                opt: this.parseId != 1 ? 'send' : 'append',
+                opt: this.parseId != 0 ? 'send' : 'append',
                 currentKind: "",
                 curr_indx: 0,
                 beginHeight: 0,

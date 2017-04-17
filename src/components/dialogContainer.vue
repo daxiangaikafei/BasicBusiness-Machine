@@ -29,7 +29,7 @@
     import inputArea from './inputArea'
     import dialogTag from './dialogTag'
     import ApiControl from '../config/envConfig.home'
-    var env = 'product';// set env type for debug or product
+    var env = 'debug';// set env type for debug or product
     // var dataArray = ["question1","question2","question3","question4"]
     export default {
         name: 'dialogContainer',
@@ -92,7 +92,6 @@
                 this.afterRender();
 
                 // var urlQuery = Math.floor((Math.random()*dataArray.length))
-                // console.log(urlQuery);
                 // // for demo
                 // ajax('GET', ApiControl.getApi(env,dataArray[urlQuery]),{
                 // 	lat: this.lat,
