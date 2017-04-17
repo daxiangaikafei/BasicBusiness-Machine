@@ -9,9 +9,9 @@ var _defaultApi = {
         tagItem: '/mock/tagList.json'
     },
     product: {
-        question: '/talk/question.do?',
-        allTagList: '/tag/allList.do?',
-        tagList: '/tag/items.do?',
+        question: '/ai/talk/question.do?',
+        allTagList: '/ai/tag/allList.do?',
+        tagList: '/ai/tag/items.do?',
 
     }
 }
