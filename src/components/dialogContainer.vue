@@ -95,17 +95,17 @@
                 // call back function for dom update
                 this.afterRender();
 
-                // var urlQuery = Math.floor((Math.random()*dataArray.length))
-                // // for demo
-                // ajax('GET', ApiControl.getApi(env,dataArray[urlQuery]),{
-                // 	lat: this.lat,
-                // 	lon: this.lng,
-                // 	device: this.device,
-                // 	q: id == '' ? value: id
-                // }).
-                // then(res => {
-                //     this.receiveMsg(res)
-                // })
+                var urlQuery = Math.floor((Math.random()*dataArray.length))
+                // for demo
+                ajax('GET', ApiControl.getApi(env,dataArray[urlQuery]),{
+                	lat: this.lat,
+                	lon: this.lng,
+                	device: this.device,
+                	q: id == '' ? value: id
+                }).
+                then(res => {
+                    this.receiveMsg(res)
+                })
 
                 // for server
                 ajax('GET', ApiControl.getApi(env,"question"),{
@@ -152,11 +152,14 @@
         },
         mounted() {
             document.getElementById('dialog-container').style.height = (document.body.clientHeight - 100) + 'px'
-
-            ajax('GET', ApiControl.getApi(env,"tagItem")).
-            then(res => {
-                this.tagList = res.data
-            })
+            if(this.id != 0){
+            	ajax('GET', ApiControl.getApi(env,"tagItem"),{
+            		id: this.id
+            	}).
+            	then(res => {
+            	    this.tagList = res.data
+            	})
+            }
 
         },
         computed() {}

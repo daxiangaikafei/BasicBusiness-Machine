@@ -12,7 +12,7 @@ var _defaultApi = {
     product: {
         question: '/ai/talk/question.do',
         allTagList: '/ai/tags/allList.do',
-        tagList: '/ai/tags/items.do',
+        tagItem: '/ai/tags/items.do',
 
     }
 }
