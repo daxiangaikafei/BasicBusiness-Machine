@@ -32,6 +32,9 @@
 			border: solid 1px #d5d5d5;
 			margin: 0 10px;
 			padding: 0 8px;
+			max-width: 100px;
+    		overflow: hidden;
+    		text-overflow: ellipsis;
 		}
 	}
 </style>
