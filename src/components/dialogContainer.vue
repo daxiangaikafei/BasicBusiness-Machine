@@ -9,6 +9,7 @@
 					<receiveMsgWeather v-bind:item="item"></receiveMsgWeather>
 					<receiveMsgQuestion v-on:sendMsg="sendMsg" v-bind:item="item"></receiveMsgQuestion>
 					<receiveMsgInit v-if="initFlag == 0" v-bind:item="item"></receiveMsgInit>
+					<receiveMsgCustomService v-bind:item="item"></receiveMsgCustomService>
 				</div>
 			</div>
 		</div>
@@ -26,11 +27,12 @@
     import receiveMsgWeather from './receiveMsgWeather'
     import receiveMsgQuestion from './receiveMsgQuestion'
     import receiveMsgInit from './receiveMsgInit'
+    import receiveMsgCustomService from './receiveMsgCustomService'
     import inputArea from './inputArea'
     import dialogTag from './dialogTag'
     import ApiControl from '../config/envConfig.home'
     var env = 'product';// set env type for debug or product
-    // var dataArray = ["question1","question2","question3","question4"]
+    // var dataArray = ["question1","question2","question3","question4","question5"]
     export default {
         name: 'dialogContainer',
         data() {
@@ -41,7 +43,8 @@
                         questionType: 'normal',
                         receiveContext: '欢迎使用智能机器人小智~~',
                         data: {
-                            value: '欢迎使用智能机器人小智~~'
+                            value: '欢迎使用智能机器人小智~~',
+                            link: ''
                         }
                     }
                 }],
@@ -61,6 +64,7 @@
             receiveMsgWeather,
             receiveMsgQuestion,
             receiveMsgInit,
+            receiveMsgCustomService,
             inputArea,
             dialogTag
         },
@@ -152,7 +156,6 @@
             ajax('GET', ApiControl.getApi(env,"tagItem")).
             then(res => {
                 this.tagList = res.data
-                console.log(this.tagList.items)
             })
 
         },

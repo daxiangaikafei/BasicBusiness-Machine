@@ -1,7 +1,8 @@
 <template>
-	<div class="receiveMsg-context" v-if="item.receiveObj.questionType == 'normal'">
+	<div class="receiveMsg-custom-service" v-if="item.receiveObj.questionType == 'customService'">
 		<img class="img-icon" src="../static/images/receiveMsg-icon.png">
-		<div class="receiveMsg-context-text">{{ item.receiveObj.data.value }}
+		<div class="receiveMsg-context-text">亲，小智不明白您的问题噢，您可以联系客服。
+			<a v-if="item.receiveObj.data.link != undefined && item.receiveObj.data.link != ''" class="customer-service" target="_blank" :href="item.receiveObj.data.link">立即前去</a>
 		</div>
 	</div>
 </template>
@@ -13,7 +14,7 @@
 	
 </script>
 <style lang="less">
-	.receiveMsg-context{
+	.receiveMsg-custom-service{
 		text-align: left;
 		margin-top: 30px;
 		.receiveMsg-context-text{
@@ -28,7 +29,7 @@
 		    max-width: 250px;
 		    margin-left: 20px;
 		    padding: 15px 17.5px 15px 17.5px;
-		    .text-link{
+		    .customer-service{
 		    	color: #427cf3;
 		    	text-decoration: underline;
 		    }
