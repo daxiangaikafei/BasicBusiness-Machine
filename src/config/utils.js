@@ -24,3 +24,15 @@ export const removeStore = name => {
 	if (!name) return;
 	window.localStorage.removeItem(name);
 }
+
+export default {
+  getDevice () {
+    if(navigator.userAgent.match(/Android/i)){
+    	return 2;
+    }else if(navigator.userAgent.match(/iPhone|iPad|iPod/i)){
+    	return 1;
+    }else{
+    	return 3;
+    }
+  }
+}

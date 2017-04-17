@@ -31,7 +31,9 @@
     import ajax from '../config/ajax'
     // import '../plugins/jquery-1.9.1.min.js'
     import '../plugins/swiper.min.js'
-    import '../style/swiper.min.css'
+    import '../static/style/swiper.min.css'
+    import ApiControl from '../config/envConfig.home'
+    var env = 'product';// set env type for debug or product
     export default {
         props: ['parseId'],
         data() {
@@ -47,7 +49,7 @@
             }
         },
         created: function() {
-            ajax('GET', '/mock/messageList.json').
+            ajax('GET', ApiControl.getApi(env,"allTagList")).
             then(res => {
                 this.panelList = res.data;
                 this.panelList.forEach(function(val, index, arr) {  
@@ -58,7 +60,8 @@
         methods: {
             sending: function(info, id) {
                 this.sendMsg = '';
-                this.$emit("sendMsg", info, id ? id : '');
+                // this.$emit("sendMsg", info, id ? id : '');
+                this.$emit("sendMsg", info, '');
             },
             enter: function(ev) {
                 if (ev.keyCode == 13) {
@@ -155,10 +158,10 @@
         },
         mounted: function() {
             this.beginHeight = window.innerHeight;
-            document.addEventListener("touchmove", function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }, false);
+            // document.addEventListener("touchmove", function(e) {
+            //     // e.preventDefault();
+            //     e.stopPropagation();
+            // }, false);
 
         }
     }

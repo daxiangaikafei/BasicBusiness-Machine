@@ -54,6 +54,8 @@
 	</div>
 </template>
 <script>
+	import '../plugins/swiper.min.js'
+	import '../static/style/swiper.min.css'
 	export default {
 		data() {
 			return {
@@ -73,8 +75,16 @@
 		},
 		methods: {
 			changeGoods: function(itemId,type){
-				(this.goodsIndex + 2) >= this.item.receiveObj.data.banner.length ? this.goodsIndex = 0 : this.goodsIndex += 2
+				(this.goodsIndex + 2) >= this.item.receiveObj.data.stuff.length ? this.goodsIndex = 0 : this.goodsIndex += 2
 			}
+		},
+		mounted() {
+			//初始化swiper
+			new Swiper('.swiper-container', {
+			    pagination: '.swiper-pagination',
+			    loop: true,
+			    autoplay: 3000
+			});
 		}
 	}
 </script>

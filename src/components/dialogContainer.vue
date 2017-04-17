@@ -1,6 +1,6 @@
 <template>
 	<div id="dialog-list">
-		<div id="dialog-container" v-on:click="sendMsg('发送消息')">
+		<div id="dialog-container">
 			<div class="dialog-item" v-for="item in itemList">
 				<sendMsg v-bind:item="item"></sendMsg>
 				<div class="receiveMsg-container" v-if="item.type == 2">
@@ -13,17 +13,13 @@
 			</div>
 		</div>
 		<dialogTag v-bind:tagList="tagList" v-on:sendMsg="sendMsg" v-if="id == 0"></dialogTag>
-		<inputArea @sendMsg='sendMsg' parseId=1></inputArea>
-<!-- 		<button class="send-button" v-on:click="sendMsg">发送消息</button>
-		<button class="receive-button" v-on:click="receiveMsg">接收消息</button> -->
+		<inputArea @sendMsg='sendMsg' v-bind:parseId="id"></inputArea>
 	</div>
-
 </template>
 
 <script>
-    import '../plugins/swiper.min.js'
-    import '../static/style/swiper.min.css'
     import ajax from '../config/ajax'
+    import utils from '../config/utils'
     import sendMsg from './sendMsg'
     import receiveMsgContext from './receiveMsgContext'
     import receiveMsgGoods from './receiveMsgGoods'
@@ -32,6 +28,9 @@
     import receiveMsgInit from './receiveMsgInit'
     import inputArea from './inputArea'
     import dialogTag from './dialogTag'
+    import ApiControl from '../config/envConfig.home'
+    var env = 'product';// set env type for debug or product
+    // var dataArray = ["question1","question2","question3","question4"]
     export default {
         name: 'dialogContainer',
         data() {
@@ -47,9 +46,12 @@
                     }
                 }],
                 id: 0,
+                lat: '',
+                lng: '',
                 title: '',
                 initFlag: 1,
-                tagList: {}
+                tagList: {},
+                device: ''
             }
         },
         components: {
@@ -89,18 +91,26 @@
                 // call back function for dom update
                 this.afterRender();
 
-                //初始化swiper
-                new Swiper('.swiper-container', {
-                    pagination: '.swiper-pagination',
-                    loop: true,
-                    autoplay: 3000
-                });
+                // var urlQuery = Math.floor((Math.random()*dataArray.length))
+                // console.log(urlQuery);
+                // // for demo
+                // ajax('GET', ApiControl.getApi(env,dataArray[urlQuery]),{
+                // 	lat: this.lat,
+                // 	lon: this.lng,
+                // 	device: this.device,
+                // 	q: id == '' ? value: id
+                // }).
+                // then(res => {
+                //     this.receiveMsg(res)
+                // })
 
-                // var number = this.getRandom();
-				var number = id;
-                var url = '/mock/' + number + '.json';
-                // send message to server
-                ajax('GET', url).
+                // for server
+                ajax('GET', ApiControl.getApi(env,"question"),{
+                	lat: this.lat,
+                	lon: this.lng,
+                	device: this.device,
+                	q: id == '' ? value: id
+                }).
                 then(res => {
                     this.receiveMsg(res)
                 })
@@ -121,11 +131,6 @@
                 this.$nextTick(function() {
                     document.getElementById('dialog-container').scrollTop = document.getElementById('dialog-container').scrollHeight;
                 })
-            },
-            getRandom: function() {
-                var i = Math.random();
-                // return Math.ceil(i * 10) >= 5 ? 4 : Math.ceil(i * 10);
-                return 4;
             }
 
         },
@@ -135,19 +140,17 @@
             var lat = this.$route.query.lat
             var lng = this.$route.query.lng
             this.id = pageId;
+            this.lat = lat;
+            this.lng = lng;
             document.title = this.title
 
-            //初始化swiper
-            new Swiper('.swiper-container', {
-                pagination: '.swiper-pagination',
-                loop: true,
-                autoplay: 3000
-            });
+            this.device = utils.getDevice();
+
         },
         mounted() {
-            document.getElementById('dialog-container').style.height = (document.body.clientHeight - 60) + 'px'
+            document.getElementById('dialog-container').style.height = (document.body.clientHeight - 100) + 'px'
 
-            ajax('GET', '/mock/tagList.json').
+            ajax('GET', ApiControl.getApi(env,"tagItem")).
             then(res => {
                 this.tagList = res.data
                 console.log(this.tagList.items)
@@ -165,6 +168,7 @@
         #dialog-container {
             height: 500px;
             overflow: auto;
+            overflow-y: scroll;
         }
     }
     
@@ -189,6 +193,8 @@
                 max-width: 250px;
                 margin-right: 20px;
                 padding: 15px 17.5px 15px 17.5px;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             .sendMsg-text:before {
                 content: '';

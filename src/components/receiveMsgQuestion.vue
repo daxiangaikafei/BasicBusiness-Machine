@@ -10,7 +10,7 @@
 						<span class="action-arrow" v-on:click="arrowClick($event)" v-bind:class="index == 0 ? 'action-arrow-up' : 'action-arrow-down'"></span>
 					</header>
 					<section v-bind:class="index > 0 ? 'hide-subtitle' : ''">
-						<div class="question-subtitle" v-for="subQuestion in question.questions" v-on:click="invokeSendMsg(subQuestion.title)">{{ subQuestion.question }}</div>
+						<div class="question-subtitle" v-for="subQuestion in question.questions" v-on:click="invokeSendMsg(subQuestion.question,subQuestion.id)">{{ subQuestion.question }}</div>
 					</section>
 				</div>
 			</div>
@@ -23,8 +23,8 @@
 		name: 'receiveMsgQuestion',
 		props: ['item'],
 		methods: {
-			invokeSendMsg: function (title) {
-				this.$emit('sendMsg',title)
+			invokeSendMsg: function (title,id) {
+				this.$emit('sendMsg',title,id)
 			},
 			arrowClick: function(event) {
 				if(event.target.className.indexOf('action-arrow-up') != -1){

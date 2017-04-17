@@ -19,7 +19,7 @@
 <style lang="less">
 	.tag-container{
 		position: absolute;
-		bottom: 20px;
+		bottom: 55px;
 		width: 100%;
 		overflow-y: auto;
 		white-space: nowrap;
