@@ -139,7 +139,7 @@
             },
             endInput: function() {
                 var _obj = this
-                if (this.detailId == 1) setTimeout(function() {
+                if (this.detailId == 0) setTimeout(function() {
                     _obj.opt = 'append'
                 }, 100);
             },
