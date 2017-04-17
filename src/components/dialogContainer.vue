@@ -95,17 +95,17 @@
                 // call back function for dom update
                 this.afterRender();
 
-                var urlQuery = Math.floor((Math.random()*dataArray.length))
-                // for demo
-                ajax('GET', ApiControl.getApi(env,dataArray[urlQuery]),{
-                	lat: this.lat,
-                	lon: this.lng,
-                	device: this.device,
-                	q: id == '' ? value: id
-                }).
-                then(res => {
-                    this.receiveMsg(res)
-                })
+                // var urlQuery = Math.floor((Math.random()*dataArray.length))
+                // // for demo
+                // ajax('GET', ApiControl.getApi(env,dataArray[urlQuery]),{
+                // 	lat: this.lat,
+                // 	lon: this.lng,
+                // 	device: this.device,
+                // 	q: id == '' ? value: id
+                // }).
+                // then(res => {
+                //     this.receiveMsg(res)
+                // })
 
                 // for server
                 ajax('GET', ApiControl.getApi(env,"question"),{

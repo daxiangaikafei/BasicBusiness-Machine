@@ -1,39 +1,21 @@
 {
-    "data": [
-        {
-            "id": 1,
-            "tagName": "有好货",
-            "items": [
-                {
-                    "tagDetailId": 1,
-                    "value": "返券规则"
-                },
-                {
-                    "tagDetailId": 2,
-                    "value": "什么是有好货"
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "tagName": "雷拍",
-            "items": [
-                {
-                    "tagDetailId": 3,
-                    "value": "参加雷拍条件"
-                },
-                {
-                    "tagDetailId": 5,
-                    "value": "测试标签"
-                },
-                {
-                    "tagDetailId": 6,
-                    "value": "还是测试标签"
-                }
-            ]
-        }
+  "data": {
+    "items": [
+      {
+        "tagDetailId": 1,
+        "value": "注册帐号"
+      },
+      {
+        "tagDetailId": 2,
+        "value": "找回密码"
+      },{
+        "tagDetailId": 3,
+        "value": "忘记帐号"
+      }
     ],
-    "success": true,
-    "message": "Ok",
-    "responseCode": 1000
+    "menuId": 2
+  },
+  "success": true,
+  "message": "Ok",
+  "responseCode": 1000
 }
