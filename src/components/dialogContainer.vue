@@ -12,7 +12,7 @@
 				</div>
 			</div>
 		</div>
-		<dialogTag v-bind:tagList="tagList" v-on:sendMsg="sendMsg" v-if="id == 0"></dialogTag>
+		<dialogTag v-bind:tagList="tagList" v-on:sendMsg="sendMsg" v-if="id != 0"></dialogTag>
 		<inputArea @sendMsg='sendMsg' v-bind:parseId="id"></inputArea>
 	</div>
 </template>
