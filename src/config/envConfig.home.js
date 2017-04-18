@@ -11,8 +11,8 @@ var _defaultApi = {
     },
     product: {
         question: '/ai/talk/question.do',
-        allTagList: '/ai/tags/allList.do',
-        tagItem: '/ai/tags/items.do',
+        allTagList: '/ai/tag/allList.do',
+        tagItem: '/ai/tag/items.do',
 
     }
 }
