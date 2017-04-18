@@ -1,5 +1,5 @@
 <template>
-	<div class="receiveMsg-question" v-if="item.receiveObj.questionType == 'Q&A'">
+	<div class="receiveMsg-question" v-if="item.receiveObj.questionType == 'q&a'">
 		<div class="receiveMsg-question-container">
 			<img class="img-icon" src="../static/images/receiveMsg-icon.png">
 			<div class="receiveMsg-question-list">
