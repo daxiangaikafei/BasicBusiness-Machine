@@ -2,6 +2,7 @@
 	<div class="receiveMsg-context" v-if="item.receiveObj.questionType == 'normal'">
 		<img class="img-icon" src="../static/images/receiveMsg-icon.png">
 		<div class="receiveMsg-context-text">{{ item.receiveObj.data.value }}
+			<a v-if="item.receiveObj.data.link != undefined && item.receiveObj.data.link != ''" class="text-link" target="_blank" :href="item.receiveObj.data.link">立即前去</a>
 		</div>
 	</div>
 </template>
