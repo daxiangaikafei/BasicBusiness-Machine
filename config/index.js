@@ -1,6 +1,6 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
-
+console.log('path is:' + path.resolve(__dirname, '../machine/index.html'))
 module.exports = {
     build: {
         env: {NODE_ENV: '"production"'},
