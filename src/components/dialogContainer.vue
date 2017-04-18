@@ -231,7 +231,6 @@
         .receiveMsg-container {
             width: 100%;
             text-align: right;
-            margin-top: 30px;
         }
     }
     

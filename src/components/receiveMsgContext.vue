@@ -28,6 +28,9 @@
 		    max-width: 250px;
 		    margin-left: 20px;
 		    padding: 15px 17.5px 15px 17.5px;
+		    max-height: 250px;
+	        overflow: hidden;
+	        overflow-y: scroll;
 		    .text-link{
 		    	color: #427cf3;
 		    	text-decoration: underline;
