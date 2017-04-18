@@ -145,6 +145,7 @@
             this.id = pageId;
             this.lat = lat;
             this.lng = lng;
+
             document.title = this.title
 
             this.device = utils.getDevice();

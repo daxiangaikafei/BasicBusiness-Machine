@@ -5,8 +5,9 @@ export default [{
     path: '/',
     component: App,
     children: [{
-        path: '',
-        redirect: '/home'
+        path: ':pageId:title:lat:lng',
+        // redirect: '/home'
+        component: App
     },
     {
         path: '/home',
