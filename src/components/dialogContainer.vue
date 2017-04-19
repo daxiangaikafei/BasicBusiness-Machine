@@ -153,6 +153,27 @@
         },
         mounted() {
             document.getElementById('dialog-container').style.height = (document.body.clientHeight - 100) + 'px'
+
+            ajax('GET', ApiControl.getApi(env,"question"),{
+                lat: this.lat,
+                lon: this.lng,
+                device: this.device,
+                q: ''
+            }).
+            then(res => {
+                this.receiveMsg(res)
+            })
+
+            // ajax('GET', ApiControl.getApi(env,dataArray[0]),{
+            //  lat: this.lat,
+            //  lon: this.lng,
+            //  device: this.device,
+            //  q: ''
+            // }).
+            // then(res => {
+            //     this.receiveMsg(res)
+            // })
+
             if(this.id != 0){
             	ajax('GET', ApiControl.getApi(env,"tagItem"),{
             		id: this.id

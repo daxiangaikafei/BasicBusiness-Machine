@@ -24,30 +24,30 @@
 				</div>
 				<div class="goods-container-list" v-bind:class="item.receiveObj.data.banner.length == 0 ? 'empty-banner': ''">
 					<div class="goods-list" v-for="(good,index) in item.receiveObj.data.stuff.slice(goodsIndex,goodsIndex + 2)">
-						<router-link to="good.linkUrl" v-if="index == 0 || index == 1">
+						<a :href="good.linkUrl" target="_blank" v-if="index == 0 || index == 1">
 							<div class="goods-container-item">
 								<img :src="good.imgUrl" class="goods-image">
 								<div class="goods-item-detail">
 									<div class="goods-item-title">{{ good.name }}</div>
 									<div class="goods-item-price">
-										<span class="goods-item-nowprice">{{ good.price }}</span>
-										<span class="goods-item-littleprice">.00</span>
+										<span class="goods-item-nowprice">{{ Math.floor(good.price) }}</span>
+										<span class="goods-item-littleprice">.{{ good.price.toString().split('.').length == 1 ? '00' : good.price.toString().split('.')[1]}}</span>
 										<img v-bind:src="good.source | getImgUrl" class="goods-item-icon"/>
 									</div>
 									<div class="goods-item-back">
 											{{good.rebateValue}}
 									</div>
 									<div class="goods-find-similar">
-										<router-link to="good.linkUrl">
+										<a :href="similarBaseUrl + good.stuffId" target="_blank">
 											找相似
-										</router-link>
+										</a>
 									</div>
 								</div>
 							</div>
-						</router-link>
-						<router-link to="good.likeUrl">
+						</a>
+						<a :href="similarBaseUrl + good.stuffId" target="_blank">
 							<div class="goods-container-like"></div>
-						</router-link>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -65,6 +65,7 @@
 		data() {
 			return {
 				goodsIndex: 0,
+				similarBaseUrl: 'newtab://goodstuff.qbao.com/similar?pid=',
 				copyItem: {
 
 				}
@@ -75,7 +76,7 @@
 		filters: {
 			// filter for get image url from key
 			getImgUrl: function(value){
-				return "../static/style/images/" + value + ".png";
+				return "../static/img/" + value + ".png";
 			}
 		},
 		methods: {
