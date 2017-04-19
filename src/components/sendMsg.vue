@@ -1,12 +1,17 @@
 <template>
+<!-- <transition name="custom-classes-transition"
+    enter-active-class="animated bounceInUp"
+    leave-active-class="animated bounceOutLeft"> -->
 	<div class="sendMsg">
-		<div class="sendMsg-container" v-if="item.type == 1">
+		<div class="sendMsg-container">
 			<div class="sendMsg-text">{{item.text}}</div>
 			<img class="img-icon" src="../static/images/sendMsg-icon.png">
 		</div>
 	</div>
+<!-- </transition> -->
 </template>
 <script>
+	import '../static/style/animate.min.css'
 	export default {
 		name: 'sendMsg',
 		props: ['item']

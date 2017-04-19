@@ -1,59 +1,64 @@
 <template>
-	<div class="receiveMsg-goods" v-if="item.receiveObj.questionType == 'goods'">
-		<div class="receiveMsg-goods-top">
-			<img class="img-icon" src="../static/images/receiveMsg-icon.png">
-			<div class="receiveMsg-goods-text">{{ item.receiveObj.title }}</div>
-		</div>
-		<div class="receiveMsg-goods-container">
-			<div class="goods-container-banner" v-if="item.receiveObj.data.banner.length > 0">
-				<div class="swiper-container banner-container">
-				  <div class="swiper-wrapper">
-				    <div class="swiper-slide" v-for="ban in item.receiveObj.data.banner">
-				      <router-link to="ban.linkUrl">
-				        <figure>
-				          <img :src="ban.imgUrl">
-				        </figure>
-				      </router-link>
-				    </div>
-				  </div>
-				  <div class="swiper-pagination"></div>
-				</div>
+	<transition name="custom-classes-transition"
+    enter-active-class="animated bounceInUp"
+    leave-active-class="animated bounceOutLeft">
+		<div class="receiveMsg-goods" v-if="item.receiveObj.questionType == 'goods'">
+			<div class="receiveMsg-goods-top">
+				<img class="img-icon" src="../static/images/receiveMsg-icon.png">
+				<div class="receiveMsg-goods-text">{{ item.receiveObj.title }}</div>
 			</div>
-			<div class="goods-container-list" v-bind:class="item.receiveObj.data.banner.length == 0 ? 'empty-banner': ''">
-				<div class="goods-list" v-for="(good,index) in item.receiveObj.data.stuff.slice(goodsIndex,goodsIndex + 2)">
-					<router-link to="good.linkUrl" v-if="index == 0 || index == 1">
-						<div class="goods-container-item">
-							<img :src="good.imgUrl" class="goods-image">
-							<div class="goods-item-detail">
-								<div class="goods-item-title">{{ good.name }}</div>
-								<div class="goods-item-price">
-									<span class="goods-item-nowprice">{{ good.price }}</span>
-									<span class="goods-item-littleprice">.00</span>
-									<img v-bind:src="good.source | getImgUrl" class="goods-item-icon"/>
-								</div>
-								<div class="goods-item-back">
-										{{good.rebateValue}}
-								</div>
-								<div class="goods-find-similar">
-									<router-link to="good.linkUrl">
-										找相似
-									</router-link>
+			<div class="receiveMsg-goods-container">
+				<div class="goods-container-banner" v-if="item.receiveObj.data.banner.length > 0">
+					<div class="swiper-container banner-container">
+					  <div class="swiper-wrapper">
+					    <div class="swiper-slide" v-for="ban in item.receiveObj.data.banner">
+					      <router-link to="ban.linkUrl">
+					        <figure>
+					          <img :src="ban.imgUrl">
+					        </figure>
+					      </router-link>
+					    </div>
+					  </div>
+					  <div class="swiper-pagination"></div>
+					</div>
+				</div>
+				<div class="goods-container-list" v-bind:class="item.receiveObj.data.banner.length == 0 ? 'empty-banner': ''">
+					<div class="goods-list" v-for="(good,index) in item.receiveObj.data.stuff.slice(goodsIndex,goodsIndex + 2)">
+						<router-link to="good.linkUrl" v-if="index == 0 || index == 1">
+							<div class="goods-container-item">
+								<img :src="good.imgUrl" class="goods-image">
+								<div class="goods-item-detail">
+									<div class="goods-item-title">{{ good.name }}</div>
+									<div class="goods-item-price">
+										<span class="goods-item-nowprice">{{ good.price }}</span>
+										<span class="goods-item-littleprice">.00</span>
+										<img v-bind:src="good.source | getImgUrl" class="goods-item-icon"/>
+									</div>
+									<div class="goods-item-back">
+											{{good.rebateValue}}
+									</div>
+									<div class="goods-find-similar">
+										<router-link to="good.linkUrl">
+											找相似
+										</router-link>
+									</div>
 								</div>
 							</div>
-						</div>
-					</router-link>
-					<router-link to="good.likeUrl">
-						<div class="goods-container-like"></div>
-					</router-link>
+						</router-link>
+						<router-link to="good.likeUrl">
+							<div class="goods-container-like"></div>
+						</router-link>
+					</div>
 				</div>
 			</div>
+			<div class="receiveMsg-goods-next">
+					不满意？ <span v-on:click="changeGoods(item.type,item.receiveObj.type)">换一批</span>
+			</div>
 		</div>
-		<div class="receiveMsg-goods-next">
-				不满意？ <span v-on:click="changeGoods(item.type,item.receiveObj.type)">换一批</span>
-		</div>
-	</div>
+	</transition>
 </template>
 <script>
+	import '../static/style/animate.min.css'
 	import '../plugins/swiper.min.js'
 	import '../static/style/swiper.min.css'
 	export default {

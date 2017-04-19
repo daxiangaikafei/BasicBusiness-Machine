@@ -1,24 +1,29 @@
 <template>
-	<div class="receiveMsg-question" v-if="item.receiveObj.questionType == 'q&a'">
-		<div class="receiveMsg-question-container">
-			<img class="img-icon" src="../static/images/receiveMsg-icon.png">
-			<div class="receiveMsg-question-list">
-				<div class="receiveMsg-question-item" v-for="(question,index) in item.receiveObj.data">
-					<header>
-						<img class="question-icon" src="../static/images/question-icon.png">
-						<span class="question-title">{{ question.dirName }}</span>
-						<span class="action-arrow" v-on:click="arrowClick($event)" v-bind:class="index == 0 ? 'action-arrow-up' : 'action-arrow-down'"></span>
-					</header>
-					<section v-bind:class="index > 0 ? 'hide-subtitle' : ''">
-						<div class="question-subtitle" v-for="subQuestion in question.questions" v-on:click="invokeSendMsg(subQuestion.question,subQuestion.id)">{{ subQuestion.question }}</div>
-					</section>
+	<transition name="custom-classes-transition"
+    enter-active-class="animated bounceInUp"
+    leave-active-class="animated bounceOutLeft">
+		<div class="receiveMsg-question" v-if="item.receiveObj.questionType == 'q&a'">
+			<div class="receiveMsg-question-container">
+				<img class="img-icon" src="../static/images/receiveMsg-icon.png">
+				<div class="receiveMsg-question-list">
+					<div class="receiveMsg-question-item" v-for="(question,index) in item.receiveObj.data">
+						<header>
+							<img class="question-icon" src="../static/images/question-icon.png">
+							<span class="question-title">{{ question.dirName }}</span>
+							<span class="action-arrow" v-on:click="arrowClick($event)" v-bind:class="index == 0 ? 'action-arrow-up' : 'action-arrow-down'"></span>
+						</header>
+						<section v-bind:class="index > 0 ? 'hide-subtitle' : ''">
+							<div class="question-subtitle" v-for="subQuestion in question.questions" v-on:click="invokeSendMsg(subQuestion.question,subQuestion.id)">{{ subQuestion.question }}</div>
+						</section>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</transition>
 </template>
 
 <script>
+	import '../static/style/animate.min.css'
 	export default {
 		name: 'receiveMsgQuestion',
 		props: ['item'],

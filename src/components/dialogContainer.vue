@@ -2,7 +2,7 @@
 	<div id="dialog-list">
 		<div id="dialog-container">
 			<div class="dialog-item" v-for="item in itemList">
-				<sendMsg v-bind:item="item"></sendMsg>
+				<sendMsg v-bind:item="item" v-if="item.type == 1"></sendMsg>
 				<div class="receiveMsg-container" v-if="item.type == 2">
 					<receiveMsgContext v-bind:item="item"></receiveMsgContext>
 					<receiveMsgGoods v-bind:item="item"></receiveMsgGoods>

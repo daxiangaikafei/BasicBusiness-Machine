@@ -1,12 +1,17 @@
 <template>
-	<div class="receiveMsg-custom-service" v-if="item.receiveObj.questionType == 'customService'">
-		<img class="img-icon" src="../static/images/receiveMsg-icon.png">
-		<div class="receiveMsg-context-text">亲，小智不明白您的问题噢，您可以联系客服。
-			<a v-if="item.receiveObj.data.link != undefined && item.receiveObj.data.link != ''" class="customer-service" target="_blank" href="newtab://ai.qbao.com/service">人工客服</a>
+	<transition name="custom-classes-transition"
+	enter-active-class="animated bounceInUp"
+	leave-active-class="animated bounceOutLeft">
+		<div class="receiveMsg-custom-service" v-if="item.receiveObj.questionType == 'customService'">
+			<img class="img-icon" src="../static/images/receiveMsg-icon.png">
+			<div class="receiveMsg-context-text">亲，小智不明白您的问题噢，您可以联系客服。
+				<a v-if="item.receiveObj.data.link != undefined && item.receiveObj.data.link != ''" class="customer-service" target="_blank" href="newtab://ai.qbao.com/service">人工客服</a>
+			</div>
 		</div>
-	</div>
+	</transition>
 </template>
 <script>
+	import '../static/style/animate.min.css'
 	export default {
 		name: 'receiveMsgContext',
 		props: ['item']

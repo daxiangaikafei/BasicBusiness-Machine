@@ -36,7 +36,7 @@
   "success": true,
   "title": "小智给您找到的相关问题",
   "message": "Ok",
-  "questionType": "Q&A",
+  "questionType": "q&a",
   "userId": 0,
   "responseCode": 1000
 }

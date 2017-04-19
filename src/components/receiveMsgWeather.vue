@@ -1,26 +1,31 @@
 <template>
-	<div class="receiveMsg-weather" v-if="item.receiveObj.questionType == 'weather'">
-		<div class="receiveMsg-weather-top">
-			<img class="img-icon" src="../static/images/receiveMsg-icon.png">
-			<div class="receiveMsg-weather-text">{{ item.receiveObj.title }}</div>
+	<transition name="custom-classes-transition"
+    enter-active-class="animated bounceInUp"
+    leave-active-class="animated bounceOutLeft">
+		<div class="receiveMsg-weather" v-if="item.receiveObj.questionType == 'weather'">
+			<div class="receiveMsg-weather-top">
+				<img class="img-icon" src="../static/images/receiveMsg-icon.png">
+				<div class="receiveMsg-weather-text">{{ item.receiveObj.title }}</div>
+			</div>
+			<table class="weather-table">
+				<tr v-for="weather in item.receiveObj.data.weatherInfo">
+					<td>{{ weather.date }}</td>
+					<td>
+						<img src="../static/images/sunny.png" v-if="weather.status == 1">
+						<img src="../static/images/rain.png" v-else-if="weather.status == 2">
+						<img src="../static/images/rain.png" v-else-if="weather.status == 3">
+						{{ weather.weather }}
+					</td>
+					<td>{{ weather.temperature }}</td>
+					<td class="weather-last-child">{{ weather.airQuality }}</td>
+				</tr>
+			</table>
 		</div>
-		<table class="weather-table">
-			<tr v-for="weather in item.receiveObj.data.weatherInfo">
-				<td>{{ weather.date }}</td>
-				<td>
-					<img src="../static/images/sunny.png" v-if="weather.status == 1">
-					<img src="../static/images/rain.png" v-else-if="weather.status == 2">
-					<img src="../static/images/rain.png" v-else-if="weather.status == 3">
-					{{ weather.weather }}
-				</td>
-				<td>{{ weather.temperature }}</td>
-				<td class="weather-last-child">{{ weather.airQuality }}</td>
-			</tr>
-		</table>
-	</div>
+	</transition>
 </template>
 
 <script>
+	import '../static/style/animate.min.css'
 	export default {
 		name: 'receiveMsgWeather',
 		props: ['item']
