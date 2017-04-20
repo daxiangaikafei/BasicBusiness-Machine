@@ -2,14 +2,14 @@
   "data": {
     "items": [
       {
-        "tagDetailId": 1,
+        "dirId": 1,
         "value": "注册帐号"
       },
       {
-        "tagDetailId": 2,
+        "dirId": 2,
         "value": "找回密码"
       },{
-        "tagDetailId": 3,
+        "dirId": 3,
         "value": "忘记帐号"
       }
     ],

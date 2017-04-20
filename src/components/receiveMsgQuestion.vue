@@ -29,7 +29,7 @@
 		props: ['item'],
 		methods: {
 			invokeSendMsg: function (title,id) {
-				this.$emit('sendMsg',title,id)
+				this.$emit('getAnswer',title,id)
 			},
 			arrowClick: function(event) {
 				if(event.target.className.indexOf('action-arrow-up') != -1){

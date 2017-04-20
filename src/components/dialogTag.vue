@@ -1,6 +1,6 @@
 <template>
 	<div class="tag-container">
-		<div class="tag-item" v-on:click="invokeSendMsg(tag.value,tag.tagDetailId)" v-for="tag in tagList.items">
+		<div class="tag-item" v-on:click="invokeSendMsg(tag.value,tag.dirId)" v-for="tag in tagList.items">
 			{{ tag.value }}
 		</div>
 	</div>
@@ -11,7 +11,7 @@
 		props: ['tagList'],
 		methods: {
 			invokeSendMsg: function(value,id){
-				this.$emit('sendMsg',value,id);
+				this.$emit('sendTagMsg',value,id);
 			}
 		}
 	}

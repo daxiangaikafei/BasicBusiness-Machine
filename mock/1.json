@@ -6,7 +6,7 @@
         "imgUrl": "https://goodstuff.qbao.com/stuff/images/src/banner/1/meizhuanglunbo1.jpg",
         "locationId": 1,
         "name": "个护美妆",
-        "id": 8
+        "stuffId": 8
       },
       {
         "linkUrl": "https://goodstuff.qbao.com/stuff/index.html#/bannerdetail/9?_k=gs352y",
@@ -20,7 +20,7 @@
       {
         "stuffId": 12826198471111,
         "name": "冷柜爆款 超市风幕柜/水果保鲜柜 蔬菜冷藏展示柜麻辣烫点菜柜",
-        "price": 4600,
+        "price": 4600.02,
         "imgUrl": "http://img04.taobaocdn.com/bao/uploaded/i4/31672460/TB2UkQ7jbBmpuFjSZFuXXaG_XXa_!!31672460.jpg",
         "linkUrl": "http://item.taobao.com/item.htm?id=12826198471&ios",
         "saleCount": 12,
@@ -44,7 +44,7 @@
         "imgUrl": "http://img04.taobaocdn.com/bao/uploaded/i4/2152572180/TB2vL5XbHeI.eBjSspkXXaXqVXa_!!2152572180.jpg",
         "linkUrl": "http://item.taobao.com/item.htm?id=41054391291&ios",
         "saleCount": 33,
-        "source": "taobao",
+        "source": "jd",
         "rebateValue": "返5%宝券"
       },
       {
@@ -54,7 +54,7 @@
         "imgUrl": "http://img01.taobaocdn.com/bao/uploaded/i1/TB1QLcXMVXXXXXxaFXXXXXXXXXX_!!0-item_pic.jpg",
         "linkUrl": "http://item.taobao.com/item.htm?id=41222337295&ios",
         "saleCount": 121,
-        "source": "tmall",
+        "source": "yhd",
         "rebateValue": "返9%宝券"
       },
       {
@@ -64,7 +64,7 @@
         "imgUrl": "http://image.taobao.com/bao/uploaded/i3/1776359794/TB2TQmTeyRnpuFjSZFCXXX2DXXa_!!1776359794.png",
         "linkUrl": "http://item.taobao.com/item.htm?id=43838079665&ios",
         "saleCount": 28,
-        "source": "taobao",
+        "source": "gome",
         "rebateValue": "返10%宝券"
       },
       {

@@ -7,14 +7,14 @@
 					<receiveMsgContext v-bind:item="item"></receiveMsgContext>
 					<receiveMsgGoods v-bind:item="item"></receiveMsgGoods>
 					<receiveMsgWeather v-bind:item="item"></receiveMsgWeather>
-					<receiveMsgQuestion v-on:sendMsg="sendMsg" v-bind:item="item"></receiveMsgQuestion>
+					<receiveMsgQuestion v-on:getAnswer="getAnswer" v-bind:item="item"></receiveMsgQuestion>
 					<receiveMsgInit v-if="initFlag == 0" v-bind:item="item"></receiveMsgInit>
 					<receiveMsgCustomService v-bind:item="item"></receiveMsgCustomService>
 				</div>
 			</div>
 		</div>
-		<dialogTag v-bind:tagList="tagList" v-on:sendMsg="sendMsg" v-if="id != 0"></dialogTag>
-		<inputArea @sendMsg='sendMsg' v-bind:parseId="id"></inputArea>
+		<dialogTag v-bind:tagList="tagList" v-on:sendTagMsg="sendTagMsg" v-if="id != 0"></dialogTag>
+		<inputArea @sendTagMsg='sendTagMsg' @sendMsg='sendMsg' v-bind:parseId="id"></inputArea>
 	</div>
 </template>
 
@@ -70,7 +70,7 @@
         },
         props: ['pageId'],
         methods: {
-            sendMsg: function(value, id) {
+            beforeSend: function(value){
                 var obj = {
                     type: 1,
                     text: value
@@ -94,18 +94,10 @@
                 this.itemList.push(initObj);
                 // call back function for dom update
                 this.afterRender();
-
-                // var urlQuery = Math.floor((Math.random()*dataArray.length))
-                // // for demo
-                // ajax('GET', ApiControl.getApi(env,dataArray[urlQuery]),{
-                // 	lat: this.lat,
-                // 	lon: this.lng,
-                // 	device: this.device,
-                // 	q: id == '' ? value: id
-                // }).
-                // then(res => {
-                //     this.receiveMsg(res)
-                // })
+            },
+            // normal send message for user input
+            sendMsg: function(value, id) {
+                this.beforeSend(value);
 
                 // for server
                 ajax('GET', ApiControl.getApi(env,"question"),{
@@ -118,6 +110,37 @@
                     this.receiveMsg(res)
                 })
 
+            },
+            // method for click tag to get questionType=q&a answer
+            sendTagMsg: function(value,id){
+                this.beforeSend(value);
+                this.ajaxTagMsg(id,value);
+
+            },
+            ajaxTagMsg: function(id,value){
+                // for server
+                ajax('GET', ApiControl.getApi(env,"details"),{
+                    device: this.device,
+                    menuId: id
+                }).
+                then(res => {
+                    this.receiveMsg(res)
+                })
+            },
+            // method for click single question to get answer
+            getAnswer: function(value,id){
+                this.beforeSend(value);
+                this.ajaxGetAnswer(id,value);
+            },
+            ajaxGetAnswer: function(value,id){
+                // for server
+                ajax('GET', ApiControl.getApi(env,"answer"),{
+                    device: this.device,
+                    id: id
+                }).
+                then(res => {
+                    this.receiveMsg(res)
+                })
             },
             receiveMsg: function(data) {
                 var obj = {
@@ -154,33 +177,37 @@
         mounted() {
             document.getElementById('dialog-container').style.height = (document.body.clientHeight - 100) + 'px'
 
-            ajax('GET', ApiControl.getApi(env,"question"),{
-                lat: this.lat,
-                lon: this.lng,
-                device: this.device,
-                q: ''
-            }).
-            then(res => {
-                this.receiveMsg(res)
-            })
-
-            // ajax('GET', ApiControl.getApi(env,dataArray[0]),{
-            //  lat: this.lat,
-            //  lon: this.lng,
-            //  device: this.device,
-            //  q: ''
-            // }).
-            // then(res => {
-            //     this.receiveMsg(res)
-            // })
-
-            if(this.id != 0){
+            // not index and goods page, init to get tag item list
+            if(this.id != 0 && this.id != 1035){
             	ajax('GET', ApiControl.getApi(env,"tagItem"),{
             		id: this.id
             	}).
             	then(res => {
             	    this.tagList = res.data
             	})
+
+                ajax('GET', ApiControl.getApi(env,"question"),{
+                    lat: this.lat,
+                    lon: this.lng,
+                    device: this.device,
+                    q: '',
+                    id: this.id
+                }).
+                then(res => {
+                    this.receiveMsg(res)
+                })
+            }
+
+            // if id=1035,init to get goods recommend info
+            if(this.id == 1035){
+                ajax('GET', ApiControl.getApi(env,"recommend"),{
+                    page: 1,
+                    size: 5,
+                    device: this.device
+             }).
+             then(res => {
+                 this.receiveMsg(res)
+             })
             }
 
         },

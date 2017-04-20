@@ -8,7 +8,7 @@
 				<div class="receiveMsg-goods-text">{{ item.receiveObj.title }}</div>
 			</div>
 			<div class="receiveMsg-goods-container">
-				<div class="goods-container-banner" v-if="item.receiveObj.data.banner.length > 0">
+				<div class="goods-container-banner" v-if="item.receiveObj.data.banner && item.receiveObj.data.banner.length > 0">
 					<div class="swiper-container banner-container">
 					  <div class="swiper-wrapper">
 					    <div class="swiper-slide" v-for="ban in item.receiveObj.data.banner">
@@ -61,6 +61,19 @@
 	import '../static/style/animate.min.css'
 	import '../plugins/swiper.min.js'
 	import '../static/style/swiper.min.css'
+	var iconList = {
+		tmall: require('../static/images/tmall.png'),
+		dangdang: require('../static/images/dangdang.png'),
+		gome: require('../static/images/gome.png'),
+		jd: require('../static/images/jd.png'),
+		jumei: require('../static/images/jumei.png'),
+		kaola: require('../static/images/kaola.png'),
+		mi: require('../static/images/mi.png'),
+		qbao: require('../static/images/qbao.png'),
+		taobao: require('../static/images/taobao.png'),
+		yhd: require('../static/images/yhd.png'),
+		yougou: require('../static/images/yougou.png')
+	}
 	export default {
 		data() {
 			return {
@@ -76,7 +89,7 @@
 		filters: {
 			// filter for get image url from key
 			getImgUrl: function(value){
-				return "../static/img/" + value + ".png";
+				return iconList[value];
 			}
 		},
 		methods: {
@@ -85,12 +98,15 @@
 			}
 		},
 		mounted() {
-			//初始化swiper
-			new Swiper('.swiper-container', {
-			    pagination: '.swiper-pagination',
-			    loop: true,
-			    autoplay: 3000
-			});
+			if(this.item.receiveObj.data.banner && this.item.receiveObj.data.banner.length > 0){
+				//初始化swiper
+				new Swiper('.swiper-container', {
+				    pagination: '.swiper-pagination',
+				    loop: true,
+				    autoplay: 3000
+				});
+			}
+			
 		}
 	}
 </script>

@@ -11,9 +11,9 @@
 				<tr v-for="weather in item.receiveObj.data.weatherInfo">
 					<td>{{ weather.date }}</td>
 					<td>
-						<img src="../static/images/sunny.png" v-if="weather.status == 1">
+<!-- 						<img src="../static/images/sunny.png" v-if="weather.status == 1">
 						<img src="../static/images/rain.png" v-else-if="weather.status == 2">
-						<img src="../static/images/rain.png" v-else-if="weather.status == 3">
+						<img src="../static/images/rain.png" v-else-if="weather.status == 3"> -->
 						{{ weather.weather }}
 					</td>
 					<td>{{ weather.temperature }}</td>
