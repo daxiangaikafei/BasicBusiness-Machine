@@ -120,9 +120,9 @@
             },
             ajaxTagMsg: function(id,value){
                 // for server
-                ajax('GET', ApiControl.getApi(env,"details"),{
+                ajax('GET', ApiControl.getApi(env,"getQuestionById"),{
                     device: this.device,
-                    menuId: id
+                    dirId: id
                 }).
                 then(res => {
                     this.receiveMsg(res)
@@ -188,11 +188,10 @@
             	    this.tagList = res.data
             	})
 
-                ajax('GET', ApiControl.getApi(env,"question"),{
+                ajax('GET', ApiControl.getApi(env,"details"),{
                     lat: this.lat,
                     lon: this.lng,
                     device: this.device,
-                    q: '',
                     id: this.id
                 }).
                 then(res => {
