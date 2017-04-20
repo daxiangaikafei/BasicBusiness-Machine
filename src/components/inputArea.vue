@@ -16,7 +16,7 @@
     		<div class="swiper-container promotion-container">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide" v-for="(item,index) in panelList">
-					<div v-bind:class="{'swiper_item':true,active:item.activeFlag}" @click="focus(index)" :id="'item_'+index" :linkTo="item.tagNameName">
+					<div v-bind:class="{'swiper_item':true,active:item.activeFlag}" @click="focus(index)" :id="'item_'+index" :linkTo="item.tagName">
                         <div class="triangle-down"></div><div class="triangle-down-out"></div>{{item.tagName}}</div>
     				</div>
 			</div>
