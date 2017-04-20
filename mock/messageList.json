@@ -1,7 +1,7 @@
 {
     "data": [{
         "id": 1,
-        "tagNameName": "有好货",
+        "tagName": "有好货",
         "items": [{
             "tagDetailId": 1,
             "value": "返券规则"
@@ -14,7 +14,7 @@
         }]
     }, {
         "id": 2,
-        "tagNameName": "雷拍",
+        "tagName": "雷拍",
         "items": [{
             "tagDetailId": 4,
             "value": "参加雷拍条件"

@@ -192,7 +192,7 @@
                     lat: this.lat,
                     lon: this.lng,
                     device: this.device,
-                    id: this.id
+                    dirId: this.id
                 }).
                 then(res => {
                     this.receiveMsg(res)
