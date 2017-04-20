@@ -49,6 +49,7 @@
                     }
                 }],
                 id: 0,
+                menuId: 0,
                 lat: '',
                 lng: '',
                 title: '',
@@ -130,7 +131,7 @@
             // method for click single question to get answer
             getAnswer: function(value,id){
                 this.beforeSend(value);
-                this.ajaxGetAnswer(id,value);
+                this.ajaxGetAnswer(value,id);
             },
             ajaxGetAnswer: function(value,id){
                 // for server
@@ -168,6 +169,7 @@
             this.id = pageId;
             this.lat = lat;
             this.lng = lng;
+            this.menuId = this.$route.query.menuId;
 
             document.title = this.title
 
@@ -180,7 +182,7 @@
             // not index and goods page, init to get tag item list
             if(this.id != 0 && this.id != 1035){
             	ajax('GET', ApiControl.getApi(env,"tagItem"),{
-            		id: this.id
+            		id: this.menuId
             	}).
             	then(res => {
             	    this.tagList = res.data
