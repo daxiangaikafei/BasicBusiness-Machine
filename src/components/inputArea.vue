@@ -1,14 +1,14 @@
 <template>
     <div class='plus_container' id='plus_container'>
         <div class="enter_field">
-            <input type="text" @focus="beginInput" @blur="endInput" @keydown="enter($event)" v-model="sendMsg" placeholder="找小智帮忙">
+            <input type="text" @input="Inputing" @focus="beginInput" @blur="endInput" @keydown="enter($event)" v-model="sendMsg" placeholder="找小智帮忙">
             <div v-bind:class="{'op_btn':true,op_send:opt=='send',op_retract:opt=='retract',op_append:opt=='append'}"  @click="execute(opt)"></div>
         </div>
     <transition name="fade">
         <div class="plus_component" v-if="opt=='retract'">
     <div class='plus_panel'>
         <ul>
-            <li v-for="item in panelList[curr_indx].items"><div class="content_btn" @click="chooseCtxt(item.value,item.tagDetailId)">{{item.value}}</div></li>
+            <li v-for="item in panelList[curr_indx].items"><div class="content_btn" @click="chooseCtxt(item.value,item.dirId)">{{item.value}}</div></li>
         </ul>
     </div>
     <div class="select_panel">
@@ -62,6 +62,10 @@
                 this.sendMsg = '';
                 // this.$emit("sendMsg", info, id ? id : '');
                 this.$emit("sendMsg", info, '');
+            },
+            sendingTag: function(info, id) {
+                this.sendMsg = '';
+                this.$emit("sendTagMsg", info, id ? id : '');
             },
             enter: function(ev) {
                 if (ev.keyCode == 13) {
@@ -119,12 +123,16 @@
                     //     });
                     // }, 100)
             },
-            beginInput: function() {
+            Inputing: function() {
                 var _obj = this;
                 this.opt = 'send';
+            },
+            beginInput: function() {
+                var _obj = this;
+                if (this.sendMsg) this.opt = 'send';
                 setTimeout(function() {
-                    _obj.endHeight = window.innerHeight;
-                    var lastHeight = parseInt(_obj.beginHeight) - parseInt(_obj.endHeight);
+                    // _obj.endHeight = window.innerHeight;
+                    // var lastHeight = parseInt(_obj.beginHeight) - parseInt(_obj.endHeight);
                     // document.getElementById("plus_container").scrollIntoView(true);
                     // $(".plus_container").css("bottom", lastHeight);
                     // alert(window.innerHeight)
@@ -140,12 +148,13 @@
             endInput: function() {
                 var _obj = this
                 if (this.detailId == 0) setTimeout(function() {
-                    _obj.opt = 'append'
+                    if (_obj.opt != "retract") _obj.opt = 'append'
                 }, 100);
             },
             chooseCtxt: function(item, id) {
                 this.sendMsg = item;
-                this.sending(this.sendMsg, id);
+                // this.sending(this.sendMsg, id);
+                this.sendingTag(this.sendMsg, id);
                 this.opt = 'append';
             },
             focus: function(indx) {
