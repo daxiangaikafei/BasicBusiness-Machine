@@ -266,7 +266,7 @@
     
     .plus_container {
         border-top: 1px solid #e1e1e1;
-        position: absolute;
+        position: fixed;
         bottom: 0px;
         width: 100%;
         .select_panel {
