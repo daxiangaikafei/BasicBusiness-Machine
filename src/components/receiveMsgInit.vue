@@ -1,7 +1,7 @@
 <template>
 	<div class="receiveMsg-context" v-if="item.receiveObj.questionType == 'init'">
 		<img class="img-icon" src="../static/images/receiveMsg-icon.png">
-		<div class="receiveMsg-context-text">{{ item.receiveObj.data.value }}</div>
+		<div class="receiveMsg-init-text">{{ item.receiveObj.data.value }}</div>
 	</div>
 </template>
 <script>
@@ -15,7 +15,7 @@
 	.receiveMsg-context{
 		text-align: left;
 		margin-top: 30px;
-		.receiveMsg-context-text{
+		.receiveMsg-init-text{
 			display: inline-block;
 			position: relative;
 		    min-height: 50px;
@@ -28,7 +28,7 @@
 		    margin-left: 20px;
 		    padding: 15px 17.5px 15px 17.5px;
 		}
-		.receiveMsg-context-text:before{
+		.receiveMsg-init-text:before{
 			content: '';  
 		    width: 0;  
 		    height: 0;  
@@ -36,10 +36,10 @@
 		    border-right-color: #fff;  
 		    position: absolute;  
 		    right: 100%;  
-		    top: 40%;  
+		    top: 20px;  
 		    margin-top: -10px;
 		}
-		.receiveMsg-context-text:after{
+		.receiveMsg-init-text:after{
 			content: "";  
 			width: 0;  
 			height: 0;  
@@ -47,7 +47,7 @@
 			border-right-color: #FFF;  
 			position: absolute;  
 			right: 100%;  
-			top: 40%;  
+			top: 20px;  
 			margin-top: -8px;
 		}
 		img{

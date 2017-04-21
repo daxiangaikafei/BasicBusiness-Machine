@@ -34,9 +34,6 @@
 		    max-width: 250px;
 		    margin-left: 20px;
 		    padding: 15px 17.5px 15px 17.5px;
-		    max-height: 250px;
-	        overflow: hidden;
-	        overflow-y: scroll;
 		    .text-link{
 		    	color: #427cf3;
 		    	text-decoration: underline;
@@ -50,7 +47,7 @@
 		    border-right-color: #fff;  
 		    position: absolute;  
 		    right: 100%;  
-		    top: 40%;  
+		    top: 20px;  
 		    margin-top: -10px;
 		}
 		.receiveMsg-context-text:after{
@@ -58,10 +55,10 @@
 			width: 0;  
 			height: 0;  
 			border: 8px solid transparent;  
-			border-right-color: #FFF;  
+			border-right-color: #fff;  
 			position: absolute;  
 			right: 100%;  
-			top: 40%;  
+			top: 20px;  
 			margin-top: -8px;
 		}
 		img{

@@ -1,6 +1,6 @@
 var _defaultApi = {
     debug: {
-        question: '/mock/2.json',
+        question: '/mock/4.json',
         question1: '/mock/1.json',
         question2: '/mock/2.json',
         question3: '/mock/3.json',

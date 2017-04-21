@@ -27,7 +27,6 @@
 			display: inline-block;
 			position: relative;
 		    min-height: 50px;
-		    max-height: 135px;
 		    line-height: 20px;
 		    border: solid 1px #fff;
 		    background: #fff;
@@ -45,7 +44,7 @@
 		    border-left-color: #fff;  
 		    position: absolute;  
 		    left: 100%;  
-		    top: 40%;  
+		    top: 20px;  
 		    margin-top: -10px;
 		}
 		.sendMsg-text:after{
@@ -53,10 +52,10 @@
 			width: 0;  
 			height: 0;  
 			border: 8px solid transparent;  
-			border-left-color: #FFF;  
+			border-left-color: #fff;  
 			position: absolute;  
 			left: 100%;  
-			top: 40%;  
+			top: 20px;  
 			margin-top: -8px;
 		}
 		img{
