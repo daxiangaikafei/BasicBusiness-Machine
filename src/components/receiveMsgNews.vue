@@ -153,8 +153,9 @@
                             line-height: 40px;
                             margin-bottom: 10px;
                             span {
+                                color: #adadbd;
                                 float: right;
-                                margin-right: 11px;
+                                margin-right: 10px;
                             }
                             .news-item-source {
                                 max-width: 100px;
