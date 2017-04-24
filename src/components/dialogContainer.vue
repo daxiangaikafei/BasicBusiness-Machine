@@ -6,6 +6,7 @@
 				<div class="receiveMsg-container" v-if="item.type == 2">
 					<receiveMsgContext v-bind:item="item"></receiveMsgContext>
 					<receiveMsgGoods v-bind:item="item"></receiveMsgGoods>
+                    			<receiveMsgNews v-bind:item="item"></receiveMsgNews>
 					<receiveMsgWeather v-bind:item="item"></receiveMsgWeather>
 					<receiveMsgQuestion v-on:getAnswer="getAnswer" v-bind:item="item"></receiveMsgQuestion>
 					<receiveMsgInit v-if="initFlag == 0" v-bind:item="item"></receiveMsgInit>
@@ -24,6 +25,7 @@
     import sendMsg from './sendMsg'
     import receiveMsgContext from './receiveMsgContext'
     import receiveMsgGoods from './receiveMsgGoods'
+    import receiveMsgNews from './receiveMsgNews'
     import receiveMsgWeather from './receiveMsgWeather'
     import receiveMsgQuestion from './receiveMsgQuestion'
     import receiveMsgInit from './receiveMsgInit'
@@ -62,6 +64,7 @@
             sendMsg,
             receiveMsgContext,
             receiveMsgGoods,
+            receiveMsgNews,
             receiveMsgWeather,
             receiveMsgQuestion,
             receiveMsgInit,

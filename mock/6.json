@@ -1,0 +1,34 @@
+{
+    "data": [{
+        "source": "百度",
+        "type": "科技",
+        "summary": "标题",
+        "content": "内容",
+        "link": "http://www.baidu.com"
+    }, {
+        "source": "360",
+        "type": "科技",
+        "summary": "标题",
+        "content": "内容",
+        "link": "http://www.360.com",
+        "icon": "http://www.360.com/img/icon.jpg"
+    }, {
+        "source": "新浪",
+        "type": "科技",
+        "summary": "标题",
+        "content": "内容",
+        "link": "http://www.baidu.com",
+        "icon": ""
+    }, {
+        "summary": "标题",
+        "content": "内容",
+        "link": "http://www.baidu.com",
+        "icon": "http://www.baidu.com/img/icon.jpg"
+    }],
+    "success": true,
+    "title": "小智给您找到如下如下答案",
+    "message": "Ok",
+    "questionType": "search",
+    "userId": 0,
+    "responseCode": 1000
+}

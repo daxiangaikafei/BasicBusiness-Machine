@@ -6,6 +6,7 @@ var _defaultApi = {
         question3: '/mock/3.json',
         question4: '/mock/4.json',
         question5: '/mock/5.json',
+        question6: '/mock/6.json',
         allTagList: '/mock/messageList.json',
         tagItem: '/mock/tagList.json',
         details: '/mock/2.json',
