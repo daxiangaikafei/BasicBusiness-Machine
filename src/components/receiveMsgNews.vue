@@ -20,7 +20,6 @@
 								</div>								
 							</div>
 						</a>
-	
 					</div>
 				</div>
 			<div class="receiveMsg-news-next">
