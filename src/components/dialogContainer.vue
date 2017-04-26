@@ -43,9 +43,9 @@
                     type: 2,
                     receiveObj: {
                         questionType: 'normal',
-                        receiveContext: '欢迎使用智能机器人小',
+                        receiveContext: '欢迎使用智能机器人小智~~',
                         data: {
-                            value: '欢迎使用智能机器人小',
+                            value: '欢迎使用智能机器人小智~~',
                             link: ''
                         }
                     }
