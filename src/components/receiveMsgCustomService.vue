@@ -35,6 +35,7 @@
 		    margin-left: 20px;
 		    padding: 15px 17.5px 15px 17.5px;
 		    .customer-service{
+                display: inline;
 		    	color: #427cf3;
 		    	text-decoration: underline;
 		    }

@@ -24,6 +24,8 @@
 		text-align: right;
 		margin-top: 30px;
 		.sendMsg-text{
+            word-wrap: break-word;
+            text-align: left;
 			display: inline-block;
 			position: relative;
 		    min-height: 50px;
