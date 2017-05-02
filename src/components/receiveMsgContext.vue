@@ -4,9 +4,11 @@
     leave-active-class="animated bounceOutLeft">
 		<div class="receiveMsg-context" v-if="item.receiveObj.questionType == 'normal'">
 			<img class="img-icon" src="../static/images/receiveMsg-icon.png">
-			<div class="receiveMsg-context-text">{{ item.receiveObj.data.value }}
+			<div class="receiveMsg-context-text">
+				<span v-html="item.receiveObj.data.value"></span>
 				<a v-if="item.receiveObj.data.link != undefined && item.receiveObj.data.link != ''" class="text-link" target="_blank" :href="item.receiveObj.data.link">立即前去</a>
 			</div>
+			
 		</div>
 	</transition>
 </template>
