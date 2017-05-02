@@ -5,7 +5,7 @@
 	<div class="sendMsg">
 		<div class="sendMsg-container">
 			<div class="sendMsg-text">{{item.text}}</div>
-			<img class="img-icon" src="../static/images/sendMsg-icon.png">
+			<img class="img-icon" src="../release/static/images/sendMsg-icon.png">
 		</div>
 	</div>
 <!-- </transition> -->
