@@ -18,11 +18,12 @@
 </script>
 <style lang="less">
 	.tag-container{
-		position: absolute;
+        position: fixed;
 		bottom: 55px;
 		width: 100%;
 		overflow-y: auto;
 		white-space: nowrap;
+        background: #F5F5F5;
 		.tag-item{
 			position: relative;
 			display: inline-block;
