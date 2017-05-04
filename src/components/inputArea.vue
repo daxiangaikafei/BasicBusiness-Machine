@@ -31,6 +31,7 @@
 
 <script>
     import ajax from '../config/ajax'
+    import utils from '../config/utils'
     // import '../plugins/jquery-1.9.1.min.js'
     import '../plugins/swiper.min.js'
     import '../static/style/swiper.min.css'
@@ -50,10 +51,12 @@
                 beginHeight: 0,
                 endHeight: 0,
                 panelList: [],
-                recording_text: '按住说话'
+                recording_text: '按住说话',
+                device: ''
             }
         },
         created: function() {
+            this.device = utils.getDevice();
             ajax('GET', ApiControl.getApi(env, "allTagList")).
             then(res => {
                 this.panelList = res.data;
@@ -72,10 +75,12 @@
         methods: {
             recording: function() {
                 this.$emit("hideReminder");
-                onTouchDown();
+                if (this.device == 1) ioswebview.onTouchDown();
+                else QBaoJSBridge.onTouchDown();
             },
             recordEnd: function() {
-                onTouchUp();
+                if (this.device == 1) ioswebview.onTouchUp();
+                else QBaoJSBridge.onTouchUp();
             },
             sending: function(info, id) {
                 this.sendMsg = '';
