@@ -35,7 +35,7 @@
     import dialogTag from './dialogTag'
     import reminder from './reminder'
     import ApiControl from '../config/envConfig.home'
-    var env = 'product';// set env type for debug or product
+    var env = 'debug';// set env type for debug or product
     // var dataArray = ["question1","question2","question3","question4","question5"]
     export default {
         name: 'dialogContainer',
@@ -60,8 +60,7 @@
                 initFlag: 1,
                 tagList: {},
                 device: '',
-                isShowReminder: false,
-                _self: this
+                isShowReminder: true
             }
         },
         components: {
@@ -106,6 +105,7 @@
             },
             // normal send message for user input
             sendMsg: function(value, id) {
+                // sendMsgByApp("invoke send msg by app method");
                 this.beforeSend(value);
                 // this.isShowReminder = false;
 
@@ -187,11 +187,13 @@
 
             this.device = utils.getDevice();
 
+            window.sendMsgByApp = function(test){
+                console.log(test);
+            }
         },
         mounted() {
-            const that = this;
-            console.log(that);
             document.getElementById('dialog-container').style.height = (document.body.clientHeight - 100) + 'px'
+
             // not index and goods page, init to get tag item list
             if(this.id != 0 && this.id != 1035){
             	ajax('GET', ApiControl.getApi(env,"tagItem"),{
@@ -224,16 +226,6 @@
              })
             }
 
-            window.sendMsgByApp = window.sendMsgByApp || function(data){
-                console.log(that);
-                console.log(data)
-                if(!data || data == ""){
-                    that.isShowReminder = true;
-                }else{
-                    that.sendMsg(data);
-                }
-            }
-
         },
         computed() {}
     }
@@ -254,6 +246,52 @@
         width: 100%;
         zoom: 1;
         overflow: hidden;
+        // .sendMsg-container {
+        //     width: 100%;
+        //     text-align: right;
+        //     margin-top: 30px;
+        //     .sendMsg-text {
+        //         display: inline-block;
+        //         position: relative;
+        //         min-height: 50px;
+        //         max-height: 135px;
+        //         line-height: 20px;
+        //         border: solid 1px #fff;
+        //         background: #fff;
+        //         border-radius: 10px;
+        //         vertical-align: top;
+        //         max-width: 250px;
+        //         margin-right: 20px;
+        //         padding: 15px 17.5px 15px 17.5px;
+        //         overflow: hidden;
+        //         text-overflow: ellipsis;
+        //     }
+        //     .sendMsg-text:before {
+        //         content: '';
+        //         width: 0;
+        //         height: 0;
+        //         border: 10px solid transparent;
+        //         border-left-color: #fff;
+        //         position: absolute;
+        //         left: 100%;
+        //         top: 40%;
+        //         margin-top: -10px;
+        //     }
+        //     .sendMsg-text:after {
+        //         content: "";
+        //         width: 0;
+        //         height: 0;
+        //         border: 8px solid transparent;
+        //         border-left-color: #FFF;
+        //         position: absolute;
+        //         left: 100%;
+        //         top: 40%;
+        //         margin-top: -8px;
+        //     }
+        //     img {
+        //         margin-right: 12px;
+        //     }
+        // }
         .receiveMsg-container {
             width: 100%;
             text-align: right;

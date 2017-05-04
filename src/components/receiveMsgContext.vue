@@ -25,6 +25,7 @@
 		text-align: left;
 		margin-top: 30px;
 		.receiveMsg-context-text{
+			word-wrap: break-word;
 			display: inline-block;
 			position: relative;
 		    min-height: 50px;
