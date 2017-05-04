@@ -212,14 +212,22 @@
 
             // if id=1035,init to get goods recommend info
             if(this.id == 1035){
+
+                ajax('GET', ApiControl.getApi(env,"tagItem"),{
+                    id: this.menuId
+                }).
+                then(res => {
+                    this.tagList = res.data
+                })
+
                 ajax('GET', ApiControl.getApi(env,"recommend"),{
                     page: 1,
                     size: 5,
                     device: this.device
-             }).
-             then(res => {
-                 this.receiveMsg(res)
-             })
+                }).
+                then(res => {
+                    this.receiveMsg(res)
+                })
             }
 
             window.sendMsgByApp = window.sendMsgByApp || function(data){
