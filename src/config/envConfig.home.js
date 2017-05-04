@@ -21,7 +21,8 @@ var _defaultApi = {
         details: '/ai/indexPage/menus/details.do',
         answer: '/ai/menus/answer.do',
         recommend: '/ai/stuff/recommend.do',
-        getQuestionById: '/ai/indexPage/menus/getQuestionByDirId.do'
+        getQuestionById: '/ai/indexPage/menus/getQuestionByDirId.do',
+	switch: '/service/switch.do'
     }
 }
 module.exports = {

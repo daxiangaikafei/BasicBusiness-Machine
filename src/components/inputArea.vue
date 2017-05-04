@@ -1,7 +1,9 @@
 <template>
     <div class='plus_container' id='plus_container'>
         <div class="enter_field">
-            <input type="text" @input="Inputing" @focus="beginInput" @blur="endInput" @keydown="enter($event)" v-model="sendMsg" placeholder="找小智帮忙">
+            <div v-bind:class="{'ctrl_btn':true,ctrl_text:ctrlWay=='text',ctrl_vol:ctrlWay=='volumn'}" v-if="ctrlWay!=''"  @click="controlInput(ctrlWay)"></div>
+            <input type="text" v-bind:class="{long:ctrlWay==''}" @input="Inputing" @focus="beginInput" @blur="endInput" @keydown="enter($event)" v-model="sendMsg" placeholder="找小智帮忙" v-if="ctrlWay=='volumn'||ctrlWay==''">
+            <div class="recording_btn" v-if="ctrlWay=='text'" @touchstart="recording" @touchend="recordEnd">{{recording_text}}</div>
             <div v-bind:class="{'op_btn':true,op_send:opt=='send',op_retract:opt=='retract',op_append:opt=='append'}"  @click="execute(opt)"></div>
         </div>
     <transition name="fade">
@@ -33,7 +35,7 @@
     import '../plugins/swiper.min.js'
     import '../static/style/swiper.min.css'
     import ApiControl from '../config/envConfig.home'
-    var env = 'product';// set env type for debug or product
+    var env = 'product'; // set env type for debug or product
     export default {
         props: ['parseId'],
         data() {
@@ -41,23 +43,40 @@
                 detailId: this.parseId,
                 sendMsg: '',
                 opt: this.parseId != 0 ? 'send' : 'append',
+                ctrl_swtich: false,
+                ctrlWay: this.ctrl_swtich ? 'volumn' : '',
                 currentKind: "",
                 curr_indx: 0,
                 beginHeight: 0,
                 endHeight: 0,
-                panelList: []
+                panelList: [],
+                recording_text: '按住说话'
             }
         },
         created: function() {
-            ajax('GET', ApiControl.getApi(env,"allTagList")).
+            ajax('GET', ApiControl.getApi(env, "allTagList")).
             then(res => {
                 this.panelList = res.data;
                 this.panelList.forEach(function(val, index, arr) {  
                     val.activeFlag = index != 0 ? false : true;
                 })
             })
+            ajax('GET', ApiControl.getApi(env, "switch"), {
+                key: 'speech'
+            }).
+            then(res => {
+                this.ctrl_swtich = res.data.value == 0 ? false : true;
+                this.ctrlWay = this.ctrl_swtich ? 'volumn' : '';
+            })
         },
         methods: {
+            recording: function() {
+                this.$emit("hideReminder");
+                onTouchDown();
+            },
+            recordEnd: function() {
+                onTouchUp();
+            },
             sending: function(info, id) {
                 this.sendMsg = '';
                 // this.$emit("sendMsg", info, id ? id : '');
@@ -77,7 +96,12 @@
                     }
                 }
             },
+            controlInput: function(ctrl) {
+                this.$emit("hideReminder");
+                if (ctrl) this.ctrlWay = (ctrl == 'text' ? 'volumn' : 'text');
+            },
             execute: function(index) {
+                this.$emit("hideReminder");
                 this.opt = (index == 'append' ? 'retract' : 'append');
                 if (index == 'send') {
                     this.opt = 'send';
@@ -182,12 +206,19 @@
     }
     
     .enter_field {
+        .ctrl_btn {
+            width: 35px;
+            height: 35px;
+            margin-top: 5px;
+            float: left;
+            margin-right: 15px;
+        }
         .op_btn {
             width: 35px;
             height: 35px;
             margin-top: 5px;
             float: left;
-            margin-left: 17px;
+            margin-left: 15px;
         }
         .op_send {
             height: 31px;
@@ -202,8 +233,25 @@
             background: url(../images/enterField/append.png) no-repeat;
             background-size: contain;
         }
+        .ctrl_vol {
+            background: url(../images/enterField/volumn.png) no-repeat;
+            background-size: contain;
+        }
+        .ctrl_text {
+            background: url(../images/enterField/keyboard.png) no-repeat;
+            background-size: contain;
+        }
+        -moz-user-select:none;
+        /*火狐*/
+        -webkit-user-select:none;
+        /*webkit浏览器*/
+        -ms-user-select:none;
+        /*IE10*/
+        -khtml-user-select:none;
+        /*早期浏览器*/
+        user-select:none;
         width: 100%;
-        padding-left: 10px;
+        padding-left: 15px;
         background:#fff;
         height: 44px;
         input {
@@ -219,15 +267,49 @@
             font-size: 13px;
             margin-top: 5px;
             height: 35px;
-            width: 80%;
+            width: 68%;
             float: left;
             font-family: PingFangSC-Regular;
+        }
+        input.long {
+            width: 80%;
+        }
+        @media only screen and (max-width:374px) {
+            input {
+                width: 60%;
+            }
         }
         input:focus {
             box-shadow: 0 0 3px rgba(12, 9, 9, 0.52) inset;
             -moz-box-shadow: 0 0 3px rgba(12, 9, 9, 0.52) inset;
             /*firefox*/
             -webkit-box-shadow: 0 0 3px rgba(12, 9, 9, 0.52) inset;
+        }
+    }
+    
+    .recording_btn {
+        -webkit-appearance: none;
+        box-shadow: 0 0 1px rgba(12, 9, 9, 0.52) inset;
+        -moz-box-shadow: 0 0 1px rgba(12, 9, 9, 0.52) inset;
+        /*firefox*/
+        -webkit-box-shadow: 0 0 1px rgba(12, 9, 9, 0.52) inset;
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #e1e1e1;
+        color: #919090;
+        font-size: 13px;
+        line-height: 14px;
+        margin-top: 5px;
+        height: 35px;
+        width: 68%;
+        float: left;
+        font-family: PingFangSC-Regular;
+    }
+    
+    @media only screen and (max-width:374px) {
+        .recording_btn {
+            width: 60%;
         }
     }
     

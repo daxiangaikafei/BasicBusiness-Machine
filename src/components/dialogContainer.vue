@@ -15,7 +15,7 @@
 			</div>
 		</div>
 		<dialogTag v-bind:tagList="tagList" v-on:sendTagMsg="sendTagMsg" v-if="id != 0"></dialogTag>
-		<inputArea @sendTagMsg='sendTagMsg' @sendMsg='sendMsg' v-bind:parseId="id"></inputArea>
+		<inputArea @sendTagMsg='sendTagMsg' @sendMsg='sendMsg' v-bind:parseId="id" @hideReminder='hideReminder'></inputArea>
 	</div>
 </template>
 
