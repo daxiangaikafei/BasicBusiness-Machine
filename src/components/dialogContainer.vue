@@ -1,6 +1,6 @@
 <template>
 	<div id="dialog-list">
-		<div id="dialog-container">
+		<div id="dialog-container" @click="hideReminder">
 			<div class="dialog-item" v-for="item in itemList">
 				<sendMsg v-bind:item="item" v-if="item.type == 1"></sendMsg>
 				<div class="receiveMsg-container" v-if="item.type == 2">
@@ -15,7 +15,8 @@
 			</div>
 		</div>
 		<dialogTag v-bind:tagList="tagList" v-on:sendTagMsg="sendTagMsg" v-if="id != 0"></dialogTag>
-		<inputArea @sendTagMsg='sendTagMsg' @sendMsg='sendMsg' v-bind:parseId="id"></inputArea>
+        <reminder v-if="isShowReminder"></reminder>
+		<inputArea @hideReminder='hideReminder' @sendTagMsg='sendTagMsg' @sendMsg='sendMsg' v-bind="{parseId: id}"></inputArea>
 	</div>
 </template>
 
@@ -32,6 +33,7 @@
     import receiveMsgCustomService from './receiveMsgCustomService'
     import inputArea from './inputArea'
     import dialogTag from './dialogTag'
+    import reminder from './reminder'
     import ApiControl from '../config/envConfig.home'
     var env = 'product';// set env type for debug or product
     // var dataArray = ["question1","question2","question3","question4","question5"]
@@ -57,7 +59,9 @@
                 title: '',
                 initFlag: 1,
                 tagList: {},
-                device: ''
+                device: '',
+                isShowReminder: false,
+                _self: this
             }
         },
         components: {
@@ -70,7 +74,8 @@
             receiveMsgInit,
             receiveMsgCustomService,
             inputArea,
-            dialogTag
+            dialogTag,
+            reminder
         },
         props: ['pageId'],
         methods: {
@@ -102,6 +107,7 @@
             // normal send message for user input
             sendMsg: function(value, id) {
                 this.beforeSend(value);
+                // this.isShowReminder = false;
 
                 // for server
                 ajax('GET', ApiControl.getApi(env,"question"),{
@@ -161,6 +167,9 @@
                 this.$nextTick(function() {
                     document.getElementById('dialog-container').scrollTop = document.getElementById('dialog-container').scrollHeight;
                 })
+            },
+            hideReminder: function(){
+                this.isShowReminder = false;
             }
 
         },
@@ -180,8 +189,9 @@
 
         },
         mounted() {
+            const that = this;
+            console.log(that);
             document.getElementById('dialog-container').style.height = (document.body.clientHeight - 100) + 'px'
-
             // not index and goods page, init to get tag item list
             if(this.id != 0 && this.id != 1035){
             	ajax('GET', ApiControl.getApi(env,"tagItem"),{
@@ -214,6 +224,16 @@
              })
             }
 
+            window.sendMsgByApp = window.sendMsgByApp || function(data){
+                console.log(that);
+                console.log(data)
+                if(!data || data == ""){
+                    that.isShowReminder = true;
+                }else{
+                    that.sendMsg(data);
+                }
+            }
+
         },
         computed() {}
     }
@@ -234,52 +254,6 @@
         width: 100%;
         zoom: 1;
         overflow: hidden;
-        // .sendMsg-container {
-        //     width: 100%;
-        //     text-align: right;
-        //     margin-top: 30px;
-        //     .sendMsg-text {
-        //         display: inline-block;
-        //         position: relative;
-        //         min-height: 50px;
-        //         max-height: 135px;
-        //         line-height: 20px;
-        //         border: solid 1px #fff;
-        //         background: #fff;
-        //         border-radius: 10px;
-        //         vertical-align: top;
-        //         max-width: 250px;
-        //         margin-right: 20px;
-        //         padding: 15px 17.5px 15px 17.5px;
-        //         overflow: hidden;
-        //         text-overflow: ellipsis;
-        //     }
-        //     .sendMsg-text:before {
-        //         content: '';
-        //         width: 0;
-        //         height: 0;
-        //         border: 10px solid transparent;
-        //         border-left-color: #fff;
-        //         position: absolute;
-        //         left: 100%;
-        //         top: 40%;
-        //         margin-top: -10px;
-        //     }
-        //     .sendMsg-text:after {
-        //         content: "";
-        //         width: 0;
-        //         height: 0;
-        //         border: 8px solid transparent;
-        //         border-left-color: #FFF;
-        //         position: absolute;
-        //         left: 100%;
-        //         top: 40%;
-        //         margin-top: -8px;
-        //     }
-        //     img {
-        //         margin-right: 12px;
-        //     }
-        // }
         .receiveMsg-container {
             width: 100%;
             text-align: right;
