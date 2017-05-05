@@ -237,9 +237,6 @@
                     that.sendMsg(data);
                 }
             }
-
-            sendMsgByApp('美女')
-
         },
         computed() {}
     }
