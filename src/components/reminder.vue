@@ -1,7 +1,7 @@
 <template>
 	<transition name="custom-classes-transition"
     enter-active-class="animated bounceInUp"
-    leave-active-class="animated bounceOutDown">
+    leave-active-class="animated fadeOutDown">
 		<div class="reminder">
 			<p>亲抱歉，我没有听清楚</p>
 			<p>请再说一遍</p>

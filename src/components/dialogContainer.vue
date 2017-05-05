@@ -60,7 +60,7 @@
                 initFlag: 1,
                 tagList: {},
                 device: '',
-                isShowReminder: false
+                isShowReminder: true
             }
         },
         components: {
@@ -237,6 +237,8 @@
                     that.sendMsg(data);
                 }
             }
+
+            sendMsgByApp('美女')
 
         },
         computed() {}
