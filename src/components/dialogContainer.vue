@@ -113,7 +113,7 @@
                     lat: this.lat,
                     lon: this.lng,
                     device: this.device,
-                    q: id == '' ? value: id
+                    q: id == undefined ? value: id
                 }).
                 then(res => {
                     this.receiveMsg(res)
