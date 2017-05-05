@@ -60,7 +60,7 @@
                 initFlag: 1,
                 tagList: {},
                 device: '',
-                isShowReminder: true
+                isShowReminder: false
             }
         },
         components: {
