@@ -79,7 +79,7 @@
 			return {
 				goodsIndex: 0,
 				similarBaseUrl: 'newtab://goodstuff.qbao.com/similar?pid=',
-				goodsBaseUrl: 'newtab//ai.qbao.com/search?url=',
+				goodsBaseUrl: 'newtab://ai.qbao.com/search?url=',
 				copyItem: {
 
 				}

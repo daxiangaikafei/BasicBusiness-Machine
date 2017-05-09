@@ -40,7 +40,7 @@
         data() {
                 return {
                     newsIndex: 0,
-                    newsBaseUrl: 'newtab//ai.qbao.com/search?url=',
+                    newsBaseUrl: 'newtab://ai.qbao.com/search?url=',
                     copyItem: {
 
                     }
