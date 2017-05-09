@@ -122,6 +122,7 @@
                                 spaceBetween: 15,
                                 freeMode: true,
                                 slidesPerView: 4,
+                                initialSlide: this.curr_indx,
                                 // centeredSlides: true,
                                 onClick: function(swiper) {
                                     // var indx = swiper.clickedIndex;
