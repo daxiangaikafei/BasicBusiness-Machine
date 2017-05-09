@@ -6,7 +6,7 @@
 			<div class="receiveMsg-news-container">
 			<div class="news-container-list">
 					<div class="news-list" v-for="(newCxt,index) in item.receiveObj.data.slice(newsIndex,newsIndex + 3)">
-						<a :href="newCxt.link" target="_blank">
+						<a :href="newsBaseUrl + newCxt.link" target="_blank">
 							<div class="news-container-item">
 								<img :src="newCxt.icon" v-if="newCxt.icon" class="news-image">
 								<div v-bind:class="{'news-item-detail':true,'empty':!newCxt.icon}">
@@ -40,6 +40,7 @@
         data() {
                 return {
                     newsIndex: 0,
+                    newsBaseUrl: 'newtab//ai.qbao.com/search?url=',
                     copyItem: {
 
                     }

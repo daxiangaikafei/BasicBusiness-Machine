@@ -24,7 +24,7 @@
 				</div>
 				<div class="goods-container-list" v-bind:class="item.receiveObj.data.banner.length == 0 ? 'empty-banner': ''">
 					<div class="goods-list" v-for="(good,index) in item.receiveObj.data.stuff.slice(goodsIndex,goodsIndex + 2)">
-						<a :href="good.linkUrl" target="_blank" v-if="index == 0 || index == 1">
+						<a :href="goodsBaseUrl + good.linkUrl" target="_blank" v-if="index == 0 || index == 1">
 							<div class="goods-container-item">
 								<img :src="good.imgUrl" class="goods-image">
 								<div class="goods-item-detail">
@@ -79,6 +79,7 @@
 			return {
 				goodsIndex: 0,
 				similarBaseUrl: 'newtab://goodstuff.qbao.com/similar?pid=',
+				goodsBaseUrl: 'newtab//ai.qbao.com/search?url=',
 				copyItem: {
 
 				}
