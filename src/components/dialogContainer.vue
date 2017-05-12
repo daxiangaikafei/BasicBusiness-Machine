@@ -45,9 +45,9 @@
                     type: 2,
                     receiveObj: {
                         questionType: 'normal',
-                        receiveContext: '欢迎使用智能机器人小智~~',
+                        receiveContext: '终于等到你，小智很想你呦',
                         data: {
-                            value: '欢迎使用智能机器人小智~~',
+                            value: '终于等到你，小智很想你呦',
                             link: ''
                         }
                     }
@@ -92,7 +92,7 @@
                     type: 2,
                     receiveObj: {
                         questionType: 'init',
-                        receiveContext: '欢迎使用智能机器人小智~~',
+                        receiveContext: '终于等到你，小智很想你呦',
                         data: {
                             value: '小智正在为您思考哟.....'
                         }
@@ -173,6 +173,9 @@
 
         },
         created() {
+            this.device = utils.getDevice();
+            // if not mobile ,set empty document
+            if(this.device == 3) document.body.innerHTML = '';
             var pageId = this.$route.query.pageId
             this.title = this.$route.query.title == undefined ? '小智' : this.$route.query.title
             var lat = this.$route.query.lat
@@ -184,7 +187,7 @@
 
             document.title = this.title
 
-            this.device = utils.getDevice();
+            
 
         },
         mounted() {
@@ -212,6 +215,7 @@
 
             // if id=1035,init to get goods recommend info
             if(this.id == 1035){
+                // this.itemList[0].receiveObj.data.value = '欢迎来到有好货呦~~'
 
                 ajax('GET', ApiControl.getApi(env,"tagItem"),{
                     id: this.menuId
