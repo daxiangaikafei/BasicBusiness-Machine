@@ -215,7 +215,7 @@
 
             // if id=1035,init to get goods recommend info
             if(this.id == 1035){
-                // this.itemList[0].receiveObj.data.value = '欢迎来到有好货呦~~'
+                this.itemList[0].receiveObj.data.value = '欢迎来到有好货呦~~'
 
                 ajax('GET', ApiControl.getApi(env,"tagItem"),{
                     id: this.menuId
