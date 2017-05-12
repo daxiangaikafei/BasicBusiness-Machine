@@ -357,6 +357,7 @@
         position: fixed;
         bottom: 0px;
         width: 100%;
+        z-index: 3;
         .select_panel {
             hr {
                 position: absolute;

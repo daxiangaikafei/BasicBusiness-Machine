@@ -19,8 +19,10 @@
 <style lang="less">
 	.tag-container{
         position: fixed;
-		bottom: 55px;
+		bottom: 45px;
+		height: 40px;
 		width: 100%;
+		z-index: 3;
 		overflow-y: auto;
 		white-space: nowrap;
         background: #F5F5F5;
@@ -31,7 +33,7 @@
 			height: 30px;
 			line-height: 30px;
 			border: solid 1px #d5d5d5;
-			margin: 0 10px;
+			margin: 5px 10px;
 			padding: 0 8px;
 			max-width: 100px;
     		overflow: hidden;
