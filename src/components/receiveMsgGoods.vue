@@ -31,7 +31,7 @@
 									<div class="goods-item-title">{{ good.name }}</div>
 									<div class="goods-item-price">
 										<span class="goods-item-nowprice">{{ Math.floor(good.price) }}</span>
-										<span class="goods-item-littleprice">.{{ good.price.toString().split('.').length == 1 ? '00' : good.price.toString().split('.')[1]}}</span>
+										<span class="goods-item-littleprice">.{{ good.price.toString().split('.').length == 1 ? '00' : good.price.toString().split('.')[1].length == 1 ? good.price.toString().split('.')[1] + '0' : good.price.toString().split('.')[1]}}</span>
 										<img v-bind:src="good.source | getImgUrl" class="goods-item-icon"/>
 									</div>
 									<div class="goods-item-back">
