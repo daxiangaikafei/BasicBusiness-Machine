@@ -1,0 +1,88 @@
+ {
+  "data": {
+    "banner": [
+      {
+        "linkUrl": "https://goodstuff.qbao.com/stuff/index.html#/bannerdetail/8?_k=gs352y",
+        "imgUrl": "https://goodstuff.qbao.com/stuff/images/src/banner/1/meizhuanglunbo1.jpg",
+        "locationId": 1,
+        "name": "个护美妆",
+        "stuffId": 8
+      },
+      {
+        "linkUrl": "https://goodstuff.qbao.com/stuff/index.html#/bannerdetail/9?_k=gs352y",
+        "imgUrl": "https://goodstuff.qbao.com/stuff/images/src/banner/1/nvzhuanglunbo2.jpg",
+        "locationId": 1,
+        "name": "女装",
+        "id": 9
+      }
+    ],
+    "stuff": [
+      {
+        "stuffId": 12826198471111,
+        "name": "冷柜爆款 超市风幕柜/水果保鲜柜 蔬菜冷藏展示柜麻辣烫点菜柜",
+        "price": 4600.02,
+        "imgUrl": "http://img04.taobaocdn.com/bao/uploaded/i4/31672460/TB2UkQ7jbBmpuFjSZFuXXaG_XXa_!!31672460.jpg",
+        "linkUrl": "http://item.taobao.com/item.htm?id=12826198471&ios",
+        "saleCount": 12,
+        "source": "taobao",
+        "rebateValue": "返3%宝券"
+      },
+      {
+        "stuffId": 15879802274222,
+        "name": "泰澄车载制冰杯电热杯制冷杯 热水器烧水壶加热杯车载水杯保温杯",
+        "price": 488,
+        "imgUrl": "http://img03.taobaocdn.com/bao/uploaded/i3/TB1ThjCKFXXXXbfaXXXXXXXXXXX_!!0-item_pic.jpg",
+        "linkUrl": "http://item.taobao.com/item.htm?id=15879802274&ios",
+        "saleCount": 34,
+        "source": "tmall",
+        "rebateValue": "返7%宝券"
+      },
+      {
+        "stuffId": 41054391291111,
+        "name": "欧式装饰开关框配电表箱插座遮挡画配总开关电源推拉电表挂画壁画",
+        "price": 388,
+        "imgUrl": "http://img04.taobaocdn.com/bao/uploaded/i4/2152572180/TB2vL5XbHeI.eBjSspkXXaXqVXa_!!2152572180.jpg",
+        "linkUrl": "http://item.taobao.com/item.htm?id=41054391291&ios",
+        "saleCount": 33,
+        "source": "jd",
+        "rebateValue": "返5%宝券"
+      },
+      {
+        "stuffId": 41222337295222,
+        "name": "名龙钳 新鲜野生长江刀鱼 海鲜鲜活水产品刀鱼500克7-8条顺丰包邮",
+        "price": 480,
+        "imgUrl": "http://img01.taobaocdn.com/bao/uploaded/i1/TB1QLcXMVXXXXXxaFXXXXXXXXXX_!!0-item_pic.jpg",
+        "linkUrl": "http://item.taobao.com/item.htm?id=41222337295&ios",
+        "saleCount": 121,
+        "source": "yhd",
+        "rebateValue": "返9%宝券"
+      },
+      {
+        "stuffId": 43838079665111,
+        "name": "玫斯天然粮 无谷鲜肉发酵功能粮肠道护理全猫粮 成猫粮幼猫粮12BL",
+        "price": 335,
+        "imgUrl": "http://image.taobao.com/bao/uploaded/i3/1776359794/TB2TQmTeyRnpuFjSZFCXXX2DXXa_!!1776359794.png",
+        "linkUrl": "http://item.taobao.com/item.htm?id=43838079665&ios",
+        "saleCount": 28,
+        "source": "gome",
+        "rebateValue": "返10%宝券"
+      },
+      {
+        "stuffId": 41054391291111,
+        "name": "欧式装饰开关框配电表箱插座遮挡画配总开关电源推拉电表挂画壁画",
+        "price": 388,
+        "imgUrl": "http://img04.taobaocdn.com/bao/uploaded/i4/2152572180/TB2vL5XbHeI.eBjSspkXXaXqVXa_!!2152572180.jpg",
+        "linkUrl": "http://item.taobao.com/item.htm?id=41054391291&ios",
+        "saleCount": 33,
+        "source": "taobao",
+        "rebateValue": "返5%宝券"
+      }
+    ]
+  },
+  "success": true,
+  "title": "很开心等到你,小智很想你,来看看小智为你精选推荐",
+  "message": "Ok",
+  "questionType": "goods",
+  "userId": 0,
+  "responseCode": 1000
+}

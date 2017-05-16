@@ -1,0 +1,29 @@
+{
+    "data": [{
+        "id": 1,
+        "tagName": "有好货",
+        "items": [{
+            "tagDetailId": 1,
+            "value": "返券规则"
+        }, {
+            "tagDetailId": 2,
+            "value": "什么是有好货"
+        }, {
+            "tagDetailId": 3,
+            "value": "好货推荐"
+        }]
+    }, {
+        "id": 2,
+        "tagName": "雷拍",
+        "items": [{
+            "tagDetailId": 4,
+            "value": "参加雷拍条件"
+        }, {
+            "tagDetailId": 5,
+            "value": "中奖概率"
+        }]
+    }],
+    "success": true,
+    "message": "Ok",
+    "responseCode": 1000
+}

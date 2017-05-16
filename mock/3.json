@@ -1,0 +1,34 @@
+{
+  "data": {
+    "weatherInfo": [
+      {
+        "date": "3/27",
+        "weather": "晴",
+        "status": 1,
+        "temperature": "8-20℃",
+        "airQuality": "良"
+      },
+      {
+        "date": "3/26",
+        "weather": "晴",
+        "status": 1,
+        "temperature": "8-18℃",
+        "airQuality": "优"
+      },
+      {
+        "date": "3/25",
+        "weather": "晴",
+        "status": 2,
+        "temperature": "9-16℃",
+        "airQuality": "良"
+      }
+    ],
+    "city": "上海"
+  },
+  "success": true,
+  "title": "小智查了上海的天气,你看看~",
+  "message": "Ok",
+  "questionType": "weather",
+  "userId": 0,
+  "responseCode": 1000
+}

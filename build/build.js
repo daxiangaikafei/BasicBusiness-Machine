@@ -1,6 +1,7 @@
 // https://github.com/shelljs/shelljs
 require('shelljs/global')
 env.NODE_ENV = 'production'
+console.log('process.env.NODE_DEV is: ' + process.env.NODE_DEV)
 
 var path = require('path')
 var config = require('../config')

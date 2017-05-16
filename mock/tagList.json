@@ -1,0 +1,21 @@
+{
+  "data": {
+    "items": [
+      {
+        "dirId": 7777,
+        "value": "注册帐号"
+      },
+      {
+        "dirId": 8888,
+        "value": "找回密码"
+      },{
+        "dirId": 9999,
+        "value": "忘记帐号"
+      }
+    ],
+    "menuId": 2
+  },
+  "success": true,
+  "message": "Ok",
+  "responseCode": 1000
+}
